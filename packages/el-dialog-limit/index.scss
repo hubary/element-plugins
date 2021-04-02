@@ -1,0 +1,79 @@
+/*****
+* @Author: hubary
+* @Email:  hubary@qq.com
+* @Description: 描述
+*****/
+$han_base_height: 12px;
+.han-dialog-limit {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .el-dialog {
+    max-height: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .el-dialog__header {
+      padding: $han_base_height 20px 5px;
+      border-bottom: 1px solid #e8e8e8;
+      .el-dialog__title {
+        font-size: 16px;
+        color: #333;
+      }
+      .el-dialog__headerbtn {
+        top: 0;
+        width: 40px;
+        height: 40px;
+        right: 0;
+      }
+    }
+
+    .el-dialog__body {
+      flex: 1;
+      overflow: auto;
+      padding: 20px 30px 20px 30px;
+    }
+
+    .el-dialog__footer {
+      padding: 10px 30px 20px 30px;
+    }
+  }
+}
+
+.beautify-scrool {
+  //美化滚动条
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    border: 5px solid transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-height: 20px;
+    background-color: #fff;
+    background-clip: content-box;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+.han-dialog-limit-fullscreen {
+  .el-dialog {
+    max-height: 100%;
+    .el-dialog__body {
+      max-height: 100%;
+    }
+  }
+}
