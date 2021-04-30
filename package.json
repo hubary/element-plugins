@@ -12,7 +12,9 @@
   "license": "MIT",
   "files": [
     "dest",
-    "packages"
+    "packages",
+    "examples",
+    "vue.config.js"
   ],
   "dependencies": {
     "core-js": "^3.6.5",

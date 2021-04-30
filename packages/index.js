@@ -1,5 +1,5 @@
 import ElDialogLimit from './el-dialog-limit';
-import HubarySearchExpand from './hubary-search-expand';
+import HubarySearchExpand from './hubary-expand-search';
 import HubaryDot from './hubary-dot';
 import HubaryRemoteSearch from './hubary-remote-search';
 const components = [ElDialogLimit, HubarySearchExpand, HubaryDot, HubaryRemoteSearch];

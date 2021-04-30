@@ -5,7 +5,7 @@
 -->
 <template>
   <div>
-    <hubary-search-expand @search="onSearch" @reset="onReset">
+    <hubary-expand-search @search="onSearch" @reset="onReset">
       <el-form :inline="true" :model="formInline" label-width="120px" class="demo-form-inline">
         <el-form-item label="审批人">
           <el-input v-model="formInline.user" placeholder="审批人" class="form-item"></el-input>
@@ -47,13 +47,13 @@
           </el-select>
         </el-form-item>
       </el-form>
-    </hubary-search-expand>
+    </hubary-expand-search>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Hubary',
+  name: 'hubary-expand-search-demo',
   components: {},
   mixins: [],
   props: {},

@@ -33,7 +33,7 @@ function getData(cnt = 10) {
     });
 }
 export default {
-  name: 'ComponentName',
+  name: 'hubary-remote-search-demo',
   components: {},
   mixins: [],
   props: {},

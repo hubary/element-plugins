@@ -2,15 +2,16 @@
   <div id="app">
     <el-container class="">
       <el-header>
-        <router-link to="/el-dialog-limit">el-dialog-limit</router-link>
-        <router-link to="/hubary-search-expand">hubary-search-expand</router-link>
-        <router-link to="/hubary-dot">hubary-dot</router-link>
-        <router-link to="/hubary-remote-search">hubary-remote-search</router-link>
+        <h1>@hubary/element-plugins</h1>
       </el-header>
       <el-container>
-        <el-aside width="200px" class="hubary-aside">Aside</el-aside>
+        <el-aside width="220px" class="hubary-aside">
+          <aside-menu></aside-menu>
+        </el-aside>
         <el-main>
-          <router-view></router-view>
+          <transition name="fade-transform" mode="out-in">
+            <router-view></router-view>
+          </transition>
         </el-main>
       </el-container>
     </el-container>
@@ -18,9 +19,12 @@
 </template>
 
 <script>
+import AsideMenu from './aside-menu';
 export default {
   name: 'App',
-  components: {},
+  components: {
+    AsideMenu,
+  },
 };
 </script>
 
@@ -35,16 +39,46 @@ html,
   width: 100%;
 }
 .hubary-aside {
-  background: #b0aaaa;
   height: 100%;
+  background-color: #f2f2f2;
 }
 .el-header {
-  background: #c8c8c8;
+  background: linear-gradient(90deg, #1745fb, #33a2ef);
+  color: #fff;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 .el-container {
   height: 100%;
+}
+.el-main {
+  overflow: hidden;
+}
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  // transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  // transform: translateX(30px);
 }
 </style>

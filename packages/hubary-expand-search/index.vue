@@ -37,7 +37,7 @@
 <script>
 import { debounce } from '../utils/index';
 export default {
-  name: 'HubarySearchExpand',
+  name: 'HubaryExpandSearch',
   components: {},
   props: {
     oneItemHeight: {

@@ -20,25 +20,23 @@
       </el-table-column>
       <el-table-column prop="address" label="地址"> </el-table-column>
     </el-table>
-    <div style="font-size:30px">
-      <ul>
-        <li>
-          <hubary-dot status="default" text="待提交" :size="20"></hubary-dot>
-        </li>
-        <li>
-          <hubary-dot status="warning" text="待审批" :size="20"></hubary-dot>
-        </li>
-        <li>
-          <hubary-dot status="processing" text="审批中" :size="20"></hubary-dot>
-        </li>
-        <li>
-          <hubary-dot status="success" text="审批完成" :size="20"></hubary-dot>
-        </li>
-        <li>
-          <hubary-dot status="error" text="驳回" :size="20"></hubary-dot>
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <hubary-dot status="default" text="待提交" :size="16"></hubary-dot>
+      </li>
+      <li>
+        <hubary-dot status="warning" text="待审批" :size="16"></hubary-dot>
+      </li>
+      <li>
+        <hubary-dot status="processing" text="审批中" :size="16"></hubary-dot>
+      </li>
+      <li>
+        <hubary-dot status="success" text="审批完成" :size="16"></hubary-dot>
+      </li>
+      <li>
+        <hubary-dot status="error" text="驳回" :size="16"></hubary-dot>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -59,7 +57,7 @@ function getData(cnt = 10) {
     });
 }
 export default {
-  name: 'ComponentName',
+  name: 'hubary-dot-demo',
   components: {},
   mixins: [],
   props: {},
@@ -79,5 +77,7 @@ export default {
 <style lang="scss" scoped>
 li {
   list-style: none;
+  font-size: 16px;
+  line-height: 32px;
 }
 </style>

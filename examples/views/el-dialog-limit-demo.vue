@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'Hubary',
+  name: 'el-dialog-limit-demo',
   components: {},
   mixins: [],
   props: {},

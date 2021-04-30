@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import DialogLimitDemo from '@examples/views/el-dialog-limit-demo.vue'
 import HubaryDotDemo from '@examples/views/hubary-dot-demo.vue'
 import HubaryRemoteSearchDemo from '@examples/views/hubary-remote-search-demo.vue'
-import HubarySearchExpandDemo from '@examples/views/hubary-search-expand-demo.vue'
+import HubaryExpandSearchDemo from '@examples/views/hubary-expand-search-demo.vue'
 // ==结束==  demo组件引入  ========================1==
 Vue.use(VueRouter);
 
@@ -14,8 +14,8 @@ const routes = [
     component: DialogLimitDemo,
   },
   {
-    path: '/hubary-search-expand',
-    component: HubarySearchExpandDemo,
+    path: '/hubary-expand-search',
+    component: HubaryExpandSearchDemo,
   },
 
   {
