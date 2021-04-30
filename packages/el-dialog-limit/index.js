@@ -74,6 +74,13 @@ function ElDialogLimit(ElDialog) {
             document.querySelector(".el-dialog__body").style.maxHeight = "100%";
             document.querySelector(".el-dialog__body").style.overflowY = "auto";
           }
+        } else {
+          if (this.$el && this.$el.firstChild) {
+            this.$el.firstChild.style.height = 'auto';
+          }
+          if (document.querySelector(".el-dialog__body")) {
+            document.querySelector(".el-dialog__body").style.maxHeight = "auto";
+          }
         }
         return num
       }

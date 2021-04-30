@@ -2,8 +2,10 @@
   <div id="app">
     <el-container class="">
       <el-header>
-        <router-link to="/demo1">el-dialog-limit</router-link>
-        <router-link to="/demo2">hubary-search-expand</router-link>
+        <router-link to="/el-dialog-limit">el-dialog-limit</router-link>
+        <router-link to="/hubary-search-expand">hubary-search-expand</router-link>
+        <router-link to="/hubary-dot">hubary-dot</router-link>
+        <router-link to="/hubary-remote-search">hubary-remote-search</router-link>
       </el-header>
       <el-container>
         <el-aside width="200px" class="hubary-aside">Aside</el-aside>
@@ -26,7 +28,9 @@ export default {
 * {
   margin: 0;
 }
-body,html,#app {
+body,
+html,
+#app {
   height: 100%;
   width: 100%;
 }

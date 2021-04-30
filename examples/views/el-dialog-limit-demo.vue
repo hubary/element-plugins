@@ -1,13 +1,16 @@
 <!--
 * @Author: hubary
-* @Email:  hubary@qq.com/han.liu10@pactera.com
+* @Email:  hubary@qq.com
 * @Description: 描述
 -->
 <template>
   <div>
-    <el-button @click="visible = true">打开el-dialog-limit</el-button>
-    <el-dialog-limit :visible.sync="visible">
-      <span slot="title">标题</span>
+    <h2>el-dialog-limit</h2>
+    <el-button v-for="size in sizeType" :key="size" type="primary" @click="change(size)">{{
+      size
+    }}</el-button>
+    <el-dialog-limit :visible.sync="visible" :size="current">
+      <span slot="title">标题{{ current }}</span>
       <span>这是一段信息</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="visible = false">取消</el-button>
@@ -17,8 +20,6 @@
 </template>
 
 <script>
-// import { isArray, isObjectLike } from "lodash";
-
 export default {
   name: 'Hubary',
   components: {},
@@ -27,14 +28,24 @@ export default {
   data() {
     return {
       visible: false,
+      sizeType: ['mini', 'small', 'medium', 'fullscreen'],
+      current: 'small',
     };
   },
   computed: {},
   watch: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    change(current) {
+      this.current = current;
+      this.visible = true;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
+h2 {
+  margin-bottom: 50px;
+}
 </style>

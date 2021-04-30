@@ -44,14 +44,12 @@ export default {
       type: Number,
       default: 51,
     },
-    buttons:{
-      type:Array,
-      default:()=>{
-        return [
-          {text:'查询',size:'mini'}
-        ]
-      }
-    }
+    buttons: {
+      type: Array,
+      default: () => {
+        return [{ text: '查询', size: 'mini' }];
+      },
+    },
   },
   data() {
     return {

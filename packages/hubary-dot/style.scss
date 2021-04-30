@@ -1,0 +1,85 @@
+/*****
+* @Author: hubary
+* @Email:  hubary@qq.com
+* @描述
+*****/
+$color_processing: #1b85ff;
+$color_success: #52c41a;
+$color_error: #f5222d;
+$color_warning: #faad14;
+$color_default: #d9d9d9;
+
+.hubary-dot {
+  line-height: inherit;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  &-status-dot {
+    width: 8px;
+    height: 8px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    box-sizing: border-box;
+  }
+  &-status {
+    &-success {
+      background-color: $color_success;
+    }
+    &-error {
+      background-color: $color_error;
+    }
+    &-processing {
+      background-color: $color_processing;
+      position: relative;
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+        border: 1px solid $color_processing;
+        content: '';
+        animation: dotStatusProcessing 1.2s infinite ease-in-out;
+      }
+    }
+    &-default {
+      background-color: $color_default;
+    }
+
+    &-warning {
+      background-color: $color_warning;
+    }
+    &-text {
+      color: #666;
+      line-height: inherit;
+    }
+  }
+  @keyframes dotStatusProcessing {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+}
+.hubary-dot.has-slot,
+.hubary-dot.no-slot {
+  span:nth-of-type(1) {
+    margin-right: 8px;
+  }
+}

@@ -1,6 +1,6 @@
 <!--
 * @Author: hubary
-* @Email:  hubary@qq.com/han.liu10@pactera.com
+* @Email:  hubary@qq.com
 * @Description: 描述
 -->
 <template>
@@ -52,8 +52,6 @@
 </template>
 
 <script>
-// import { isArray, isObjectLike } from "lodash";
-
 export default {
   name: 'Hubary',
   components: {},
