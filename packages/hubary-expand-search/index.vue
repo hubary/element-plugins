@@ -66,25 +66,30 @@ export default {
     },
   },
   mounted() {
-    // console.log("mounted");
+    console.log('mounted');
     this.$nextTick(() => {
-      if (window.ResizeObserver && this.$refs.searchRef.$el) {
-        const resizeObserver = new ResizeObserver(
-          debounce((entries) => {
-            for (let entry of entries) {
-              // console.log("ResizeObserver entry", entry);
-              this.$nextTick(() => {
-                this.formHeight = entry.contentRect.height;
-              });
-            }
-          }, 100)
-        );
-        resizeObserver.observe(this.$refs.searchRef.$el);
+      const resizeObserver = new ResizeObserver(
+        debounce((entries) => {
+          for (const entry of entries) {
+            // console.log("ResizeObserver entry", entry);
+            this.$nextTick(() => {
+              this.formHeight = entry.contentRect.height;
+            });
+          }
+        }, 100)
+      );
+      // console.log('%c initOnce is running', 'color:red');
+      // console.log('initOnce el', this.$refs.searchRef);
+      if (window.ResizeObserver && this.$refs.searchRef) {
+        resizeObserver.observe(this.$refs.searchRef);
         this.$once('hook:beforeDestroy', () => {
-          resizeObserver.disconnect(this.$refs.searchRef.$el);
+          resizeObserver.disconnect(this.$refs.searchRef);
         });
       }
     });
+  },
+  updated() {
+    console.log('updated');
   },
   methods: {
     toggle() {

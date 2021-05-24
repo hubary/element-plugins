@@ -1,0 +1,31 @@
+/*****
+* @Author:  hubary
+* @Email:   hubary@qq.com
+* @对外提供以下样式
+* @margin   mt-x, mr-x, mb-x, ml-x
+* @padding  pt-x, pr-x, pb-x, pl-x
+* 使用方式  @include createSpace('hubary',(5, 10, 15, 16, 20))
+*@params 1 自定义前缀
+*@params 2 自定义间距
+*****/
+@mixin createSpace(
+  $prefix: '',
+  $space: (
+    5,
+    10,
+    15,
+    20,
+  )
+) {
+  $list: ((t, top), (r, right), (b, bottom), (l, left));
+  @each $num in $space {
+    @each $v, $vi in $list {
+      .#{$prefix}m#{$v}-#{$num} {
+        margin-#{$vi}: #{$num}px;
+      }
+      .#{$prefix}p#{$v}-#{$num} {
+        padding-#{$vi}: #{$num}px;
+      }
+    }
+  }
+}

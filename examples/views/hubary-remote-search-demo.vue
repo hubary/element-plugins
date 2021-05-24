@@ -1,6 +1,6 @@
 <!--
 * @Author: hubary
-* @Email:  hubary@qq.com/han.liu10@pactera.com
+* @Email:  hubary@qq.com
 * @描述字段
 -->
 <template>

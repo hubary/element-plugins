@@ -1,20 +1,21 @@
 <!--
 * @Author: hubary
-* @Email:  hubary@qq.com/han.liu10@pactera.com
+* @Email:  hubary@qq.com
 * @描述字段
 -->
 <template>
   <div>
+    <h2 class="mb-20">hubary-dot</h2>
     <el-table :data="tableData" height="250" border style="width: 100%">
       <el-table-column prop="accountName" label="用户名" width="180"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
       <el-table-column prop="status" label="启用状态" width="180">
-        <template #default="{row}">
+        <template #default="{ row }">
           <hubary-dot :key="row.status" :status="row.status" :text="row.status"></hubary-dot>
         </template>
       </el-table-column>
       <el-table-column prop="status" label="审批状态" width="180">
-        <template #default="{row}">
+        <template #default="{ row }">
           <hubary-dot :key="row.status" :status="row.status">{{ row.status }}</hubary-dot>
         </template>
       </el-table-column>

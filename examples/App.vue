@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~@/styles/common-space.scss';
+@include createSpace();
 * {
   margin: 0;
 }

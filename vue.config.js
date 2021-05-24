@@ -59,7 +59,7 @@ module.exports = {
       alias: {
         '@packages': path.resolve(__dirname, './packages'),
         '@examples': path.resolve(__dirname, './examples'),
-        'bpmn-design-vue': path.resolve(__dirname, './'),
+        '@': path.resolve(__dirname, './'),
       },
     },
     performance: {
