@@ -55,6 +55,7 @@ export default {
     return {
       expand: false,
       formHeight: 0,
+      showControl: false,
     };
   },
   computed: {
@@ -62,7 +63,7 @@ export default {
       if (this.formHeight) {
         return this.formHeight > this.oneItemHeight;
       }
-      return true;
+      return this.showControl;
     },
   },
   mounted() {
@@ -86,6 +87,7 @@ export default {
           resizeObserver.disconnect(this.$refs.searchRef);
         });
       }
+      this.showControl = true;
     });
   },
   updated() {
