@@ -1,7 +1,7 @@
 /**
-* @Author   han.liu10
+* @Author   hubary
 * @Email    hubary@qq.com
-* @hubary-dot   借鉴suning uxcool
+* @hubary-dot   借鉴suning uxcool badge
 **/
 import './style.scss';
 export default {

@@ -71,7 +71,7 @@ export default {
     remoteApi: {
       type: Function,
       required: true,
-      validator: function(value) {
+      validator: function (value) {
         // console.log("validator isFunction(value)", isFunction(value));
         return isFunction(value);
       },
@@ -91,7 +91,7 @@ export default {
     setOptions: {
       type: Function,
       required: false,
-      validator: function(value) {
+      validator: function (value) {
         // console.log("validator isFunction(value)", isFunction(value));
         return isFunction(value);
       },
@@ -161,7 +161,7 @@ export default {
       this.$emit('change', selectedVal, selected);
     },
     // 远程搜索
-    remoteMethod: debounce(function(searchVal) {
+    remoteMethod: debounce(function (searchVal) {
       console.log('remoteMethod', searchVal);
       if (isString(searchVal) && searchVal.trim()) {
         if (searchVal.length < this.searchLimit) {

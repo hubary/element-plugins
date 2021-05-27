@@ -1,7 +1,7 @@
 <!--
 * @Author: hubary
 * @Email:  hubary@qq.com
-* @描述
+* @hubary-expand-search
 -->
 <template>
   <div
@@ -11,14 +11,14 @@
       overflow: 'hidden',
     }"
   >
-    <div ref="searchRef" class="hubary-search-form">
+    <div ref="wrapRef" class="hubary-search-form">
       <slot name="default"></slot>
     </div>
     <div class="hubary-search-button">
       <span class="collapse-icon">
         <a v-show="showExpandIcon" @click="toggle"
           >{{ expand ? '收起' : '展开' }}
-          <i :class="expand ? 'el-icon-arrow-right' : 'el-icon-arrow-down'" />
+          <i :class="!expand ? 'el-icon-arrow-right' : 'el-icon-arrow-down'" />
         </a>
       </span>
       <template v-if="$slots.buttons && buttons.length == 2">
@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import { debounce } from '../utils/index';
+import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
+// import { debounce } from '../utils/index';
 export default {
   name: 'HubaryExpandSearch',
   components: {},
@@ -65,35 +66,50 @@ export default {
       }
       return this.showControl;
     },
+    wrapRef() {
+      return this.$refs.wrapRef;
+    },
   },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     const resizeObserver = new ResizeObserver(
+  //       debounce((entries) => {
+  //         for (const entry of entries) {
+  //           // console.log("ResizeObserver entry", entry);
+  //           this.$nextTick(() => {
+  //             this.formHeight = entry.contentRect.height;
+  //           });
+  //         }
+  //       }, 100)
+  //     );
+  //     // console.log('%c initOnce is running', 'color:red');
+  //     // console.log('initOnce el', this.$refs.wrapRef);
+  //     if (window.ResizeObserver && this.$refs.wrapRef) {
+  //       resizeObserver.observe(this.$refs.wrapRef);
+  //       this.$once('hook:beforeDestroy', () => {
+  //         resizeObserver.disconnect(this.$refs.wrapRef);
+  //       });
+  //     } else {
+  //       this.showControl = true;
+  //     }
+  //   });
+  // },
   mounted() {
-    console.log('mounted');
     this.$nextTick(() => {
-      const resizeObserver = new ResizeObserver(
-        debounce((entries) => {
-          for (const entry of entries) {
-            // console.log("ResizeObserver entry", entry);
-            this.$nextTick(() => {
-              this.formHeight = entry.contentRect.height;
-            });
-          }
-        }, 100)
-      );
-      // console.log('%c initOnce is running', 'color:red');
-      // console.log('initOnce el', this.$refs.searchRef);
-      if (window.ResizeObserver && this.$refs.searchRef) {
-        resizeObserver.observe(this.$refs.searchRef);
-        this.$once('hook:beforeDestroy', () => {
-          resizeObserver.disconnect(this.$refs.searchRef);
-        });
-      }
-      this.showControl = true;
+      addResizeListener(this.wrapRef, this.handleResize);
     });
   },
-  updated() {
-    console.log('updated');
+  beforeDestroy() {
+    if (this.wrapRef && this.handleResize) removeResizeListener(this.wrapRef, this.handleResize);
   },
   methods: {
+    handleResize() {
+      const wrapRef = this.wrapRef;
+      // console.log(wrapRef.getBoundingClientRect());
+      if (!wrapRef) return;
+      const height = wrapRef.getBoundingClientRect().height;
+      this.formHeight = Math.ceil(parseFloat(height));
+    },
     toggle() {
       this.expand = !this.expand;
     },
@@ -134,6 +150,11 @@ $right_width: 220px;
       color: #409eff;
       margin-right: 10px;
       width: 43px;
+      > a:hover {
+        cursor: pointer;
+        color: inherit;
+        text-decoration: none;
+      }
     }
   }
 }

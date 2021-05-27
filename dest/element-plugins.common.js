@@ -256,13 +256,6 @@ module.exports = !__webpack_require__("4b8b")(function () {
 
 /***/ }),
 
-/***/ "0bd3":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "0e15":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52879,17 +52872,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ "88aa":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_780ae27e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0bd3");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_780ae27e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_780ae27e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "8a0d":
 /***/ (function(module, exports) {
 
@@ -53521,6 +53503,13 @@ module.exports = UserAgent_DEPRECATED;
 var document = __webpack_require__("ef08").document;
 module.exports = document && document.documentElement;
 
+
+/***/ }),
+
+/***/ "9224":
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"@hubary/element-plugins\",\"version\":\"1.1.1\",\"private\":false,\"scripts\":{\"serve\":\"vue-cli-service serve\",\"build\":\"vue-cli-service build\",\"lint\":\"vue-cli-service lint\",\"lib\":\"vue-cli-service build --target lib --dest dest packages/index.js\"},\"main\":\"dest/element-plugins.common.js\",\"license\":\"MIT\",\"files\":[\"dest\",\"packages\",\"examples\",\"styles\",\"vue.config.js\"],\"dependencies\":{\"core-js\":\"^3.6.5\",\"vue-router\":\"^3.2.0\"},\"devDependencies\":{\"@vue/cli-plugin-babel\":\"~4.5.0\",\"@vue/cli-plugin-eslint\":\"~4.5.0\",\"@vue/cli-plugin-router\":\"~4.5.0\",\"@vue/cli-service\":\"~4.5.0\",\"@vue/eslint-config-prettier\":\"^6.0.0\",\"babel-eslint\":\"^10.1.0\",\"eslint\":\"^6.7.2\",\"eslint-plugin-prettier\":\"^3.1.3\",\"eslint-plugin-vue\":\"^6.2.2\",\"node-sass\":\"^4.14.1\",\"prettier\":\"^1.19.1\",\"raw-loader\":\"^4.0.2\",\"sass-loader\":\"^8.0.2\",\"vue-template-compiler\":\"^2.6.11\",\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"peerDependencies\":{\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"bugs\":{\"url\":\"https://github.com/Hubary/element-plugins/issues\"},\"homepage\":\"https://github.com/Hubary/element-plugins\",\"keywords\":[\"@hubary/element-plugins\",\"element-plugins\",\"hubary\",\"vue\",\"element\",\"element-ui\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/Hubary/element-plugins.git\"},\"style\":\"dest/element-plugins.css\",\"typings\":\"types/index.d.ts\"}");
 
 /***/ }),
 
@@ -55115,6 +55104,13 @@ module.exports = __webpack_require__("051b");
 
 /***/ }),
 
+/***/ "bb78":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "c098":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -55819,6 +55815,17 @@ module.exports = Object.getPrototypeOf || function (O) {
     return O.constructor.prototype;
   } return O instanceof Object ? ObjectProto : null;
 };
+
+
+/***/ }),
+
+/***/ "cff0":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_1054795c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("bb78");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_1054795c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_1054795c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -61217,210 +61224,200 @@ var el_dialog_limit = __webpack_require__("9985");
 * @Email    hubary@qq.com
 * @Description   el-dialog定制化高阶组件,用于统一弹窗样式以及大小
 **/
-function ElDialogLimit(ElDialog) {
-  return {
-    name: 'ElDialogLimit',
-    props: {
-      ...ElDialog.props,
-      // 目前只提供者三种弹窗尺寸
-      size: {
-        type: String,
-        default: 'small',
-        validator(type) {
-          if (type && !['medium', 'small', 'mini', 'fullscreen'].includes(type)) {
-            console.error(
-              'size类型必须为:' + ['medium', 'small', 'mini', 'fullscreen'].join('、')
-            )
-          }
-          return true
+/* harmony default export */ var packages_el_dialog_limit = ({
+  name: 'ElDialogLimit',
+  props: {
+    ...element_ui_common["Dialog"].props,
+    // 目前只提供者三种弹窗尺寸
+    size: {
+      type: String,
+      default: 'small',
+      validator(type) {
+        if (type && !['medium', 'small', 'mini', 'fullscreen'].includes(type)) {
+          console.error(
+            'size类型必须为:' + ['medium', 'small', 'mini', 'fullscreen'].join('、')
+          )
         }
-      },
-      // 是否可以通过点击 modal 关闭 Dialog,默认关闭,防止误触
-      closeOnClickModal: {
-        type: Boolean,
-        default: false,
-      },
-      // chrome是否美化滚动条
-      beautifyScrool: {
-        type: Boolean,
-        default: true,
-      },
-      // 弹窗loading,已用于角色授权
-      loading: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    data() {
-      return {
-        loadingInstance: null, //  Loading 服务实例
+        return true
       }
     },
-    computed: {
-      thisWidth() {
-        let num = '410px';
-        if (this.size === 'medium') {
-          num = '850px';
-          if (this.$el && this.$el.firstChild) {
-            this.$el.firstChild.style.height = '70%';
-          }
-          if (document.querySelector(".el-dialog__body")) {
-            document.querySelector(".el-dialog__body").style.maxHeight = "calc(100% - 112px)";
-            document.querySelector(".el-dialog__body").style.overflowY = "auto";
-          }
-        } else if (this.size === 'small') {
-          num = '590px';
-          if (this.$el && this.$el.firstChild) {
-            this.$el.firstChild.style.height = 'auto';
-          }
-          if (document.querySelector(".el-dialog__body")) {
-            document.querySelector(".el-dialog__body").style.maxHeight = "auto";
-          }
-        } else if (this.size === 'fullscreen') {
-          num = '100%';
-          if (this.$el && this.$el.firstChild) {
-            this.$el.firstChild.style.height = '100%';
-            this.$el.firstChild.style.maxHeight = '100%';
-          }
-          if (document.querySelector(".el-dialog__body")) {
-            document.querySelector(".el-dialog__body").style.maxHeight = "100%";
-            document.querySelector(".el-dialog__body").style.overflowY = "auto";
-          }
-        } else {
-          if (this.$el && this.$el.firstChild) {
-            this.$el.firstChild.style.height = 'auto';
-          }
-          if (document.querySelector(".el-dialog__body")) {
-            document.querySelector(".el-dialog__body").style.maxHeight = "auto";
-          }
-        }
-        return num
-      }
+    // 是否可以通过点击 modal 关闭 Dialog,默认关闭,防止误触
+    closeOnClickModal: {
+      type: Boolean,
+      default: false,
     },
-    created() {
-
+    // chrome是否美化滚动条
+    beautifyScrool: {
+      type: Boolean,
+      default: true,
     },
-    watch: {
-      loading: {
-        handler(newVal, oldVal) {
-          try {
-            if (newVal && !oldVal) {
-              this.loadingInstance = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                // background: 'rgba(0, 0, 0, 0.7)',
-                target: document.querySelector('.el-dialog__wrapper[visible=visible] .el-dialog'),
-              })
-            } else if (oldVal && !newVal && this.loadingInstance) {
-              this.loadingInstance.close()
-            }
-          } catch (error) {
-            if (this.loadingInstance) {
-              this.loadingInstance.close()
-            }
-            this.loadingInstance = null;
-          }
-        },
-        immediate: true,
-      }
+    // 弹窗loading,已用于角色授权
+    loading: {
+      type: Boolean,
+      default: false,
     },
-    beforeDestroy() {
-      if (this.loadingInstance) {
-        this.loadingInstance.close()
-      }
-      this.loadingInstance = null;
-    },
-    render(h) {
-      const slots = Object.keys(this.$slots)
-        .reduce((arr, key) => arr.concat(this.$slots[key]), [])
-        .map((vnode) => {
-          // console.log('el-dialog-limit slot',vnode)
-          if (vnode.data && ['title', 'footer'].includes(vnode.data.slot)) {
-            vnode.context = this._self;
-          }
-          return vnode;
-        });
-      return h(
-        ElDialog,
-        {
-          on: this.$listeners,
-          attrs: this.$attrs,
-          props: {
-            ...this.$props,
-            width: this.thisWidth,
-            target: '.el-dialog__body',
-            fullscreen: this.size === 'fullscreen',
-          },
-          class: {
-            'han-dialog-limit': true,
-            'beautify-scrool': this.beautifyScrool,
-            "han-dialog-limit-fullscreen": this.size === 'fullscreen'
-          },
-        },
-        slots
-      );
+  },
+  data() {
+    return {
+      loadingInstance: null, //  Loading 服务实例
     }
-  }
-};
-/* harmony default export */ var packages_el_dialog_limit = (ElDialogLimit(element_ui_common["Dialog"]));
+  },
+  computed: {
+    thisWidth() {
+      let num = '410px';
+      if (this.size === 'medium') {
+        num = '850px';
+        if (this.$el && this.$el.firstChild) {
+          this.$el.firstChild.style.height = '70%';
+        }
+        if (document.querySelector(".el-dialog__body")) {
+          document.querySelector(".el-dialog__body").style.maxHeight = "calc(100% - 112px)";
+          document.querySelector(".el-dialog__body").style.overflowY = "auto";
+        }
+      } else if (this.size === 'small') {
+        num = '590px';
+        if (this.$el && this.$el.firstChild) {
+          this.$el.firstChild.style.height = 'auto';
+        }
+        if (document.querySelector(".el-dialog__body")) {
+          document.querySelector(".el-dialog__body").style.maxHeight = "auto";
+        }
+      } else if (this.size === 'fullscreen') {
+        num = '100%';
+        if (this.$el && this.$el.firstChild) {
+          this.$el.firstChild.style.height = '100%';
+          this.$el.firstChild.style.maxHeight = '100%';
+        }
+        if (document.querySelector(".el-dialog__body")) {
+          document.querySelector(".el-dialog__body").style.maxHeight = "100%";
+          document.querySelector(".el-dialog__body").style.overflowY = "auto";
+        }
+      } else {
+        if (this.$el && this.$el.firstChild) {
+          this.$el.firstChild.style.height = 'auto';
+        }
+        if (document.querySelector(".el-dialog__body")) {
+          document.querySelector(".el-dialog__body").style.maxHeight = "auto";
+        }
+      }
+      return num
+    }
+  },
+  created() {
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"abbb4270-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=780ae27e&scoped=true&
+  },
+  watch: {
+    loading: {
+      handler(newVal, oldVal) {
+        try {
+          if (newVal && !oldVal) {
+            this.loadingInstance = this.$loading({
+              lock: true,
+              text: 'Loading',
+              spinner: 'el-icon-loading',
+              // background: 'rgba(0, 0, 0, 0.7)',
+              target: document.querySelector('.el-dialog__wrapper[visible=visible] .el-dialog'),
+            })
+          } else if (oldVal && !newVal && this.loadingInstance) {
+            this.loadingInstance.close()
+          }
+        } catch (error) {
+          if (this.loadingInstance) {
+            this.loadingInstance.close()
+          }
+          this.loadingInstance = null;
+        }
+      },
+      immediate: true,
+    }
+  },
+  beforeDestroy() {
+    if (this.loadingInstance) {
+      this.loadingInstance.close()
+    }
+    this.loadingInstance = null;
+  },
+  render(h) {
+    const slots = Object.keys(this.$slots)
+      .reduce((arr, key) => arr.concat(this.$slots[key]), [])
+      .map((vnode) => {
+        // console.log('el-dialog-limit slot',vnode)
+        if (vnode.data && ['title', 'footer'].includes(vnode.data.slot)) {
+          vnode.context = this._self;
+        }
+        return vnode;
+      });
+    return h(
+      element_ui_common["Dialog"],
+      {
+        on: this.$listeners,
+        attrs: this.$attrs,
+        props: {
+          ...this.$props,
+          width: this.thisWidth,
+          target: '.el-dialog__body',
+          fullscreen: this.size === 'fullscreen',
+        },
+        class: {
+          'han-dialog-limit': true,
+          'beautify-scrool': this.beautifyScrool,
+          "han-dialog-limit-fullscreen": this.size === 'fullscreen'
+        },
+      },
+      slots
+    );
+  }
+});
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8932884-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hubary-search-frame",style:({
     height: _vm.expand ? 'auto' : _vm.oneItemHeight + 'px',
     overflow: 'hidden',
-  })},[_c('div',{ref:"searchRef",staticClass:"hubary-search-form"},[_vm._t("default")],2),_c('div',{staticClass:"hubary-search-button"},[_c('span',{staticClass:"collapse-icon"},[_c('a',{directives:[{name:"show",rawName:"v-show",value:(_vm.showExpandIcon),expression:"showExpandIcon"}],on:{"click":_vm.toggle}},[_vm._v(_vm._s(_vm.expand ? '收起' : '展开')+" "),_c('i',{class:_vm.expand ? 'el-icon-arrow-right' : 'el-icon-arrow-down'})])]),(_vm.$slots.buttons && _vm.buttons.length == 2)?[_vm._t("buttons")]:[_c('el-button',{attrs:{"size":"mini","icon":"el-icon-search","type":"primary"},on:{"click":_vm.onSearch}},[_vm._v("搜索")]),_c('el-button',{attrs:{"size":"mini","icon":"el-icon-refresh-left"},on:{"click":_vm.onReset}},[_vm._v("重置")])]],2)])}
+  })},[_c('div',{ref:"wrapRef",staticClass:"hubary-search-form"},[_vm._t("default")],2),_c('div',{staticClass:"hubary-search-button"},[_c('span',{staticClass:"collapse-icon"},[_c('a',{directives:[{name:"show",rawName:"v-show",value:(_vm.showExpandIcon),expression:"showExpandIcon"}],on:{"click":_vm.toggle}},[_vm._v(_vm._s(_vm.expand ? '收起' : '展开')+" "),_c('i',{class:!_vm.expand ? 'el-icon-arrow-right' : 'el-icon-arrow-down'})])]),(_vm.$slots.buttons && _vm.buttons.length == 2)?[_vm._t("buttons")]:[_c('el-button',{attrs:{"size":"mini","icon":"el-icon-search","type":"primary"},on:{"click":_vm.onSearch}},[_vm._v("搜索")]),_c('el-button',{attrs:{"size":"mini","icon":"el-icon-refresh-left"},on:{"click":_vm.onReset}},[_vm._v("重置")])]],2)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./packages/hubary-expand-search/index.vue?vue&type=template&id=780ae27e&scoped=true&
+// CONCATENATED MODULE: ./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
 
-// CONCATENATED MODULE: ./packages/utils/index.js
-/**
- * This is just a simple version of deep copy
- * Has a lot of edge cases bug
- * If you want to use a perfect deep copy, use lodash's _.cloneDeep
- * @param {Object} source
- * @returns {Object}
- */
-function deepClone(source) {
-  if (!source && typeof source !== 'object') {
-    throw new Error('error arguments', 'deepClone');
+// EXTERNAL MODULE: ./node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js
+var ResizeObserver_es = __webpack_require__("6dd8");
+
+// CONCATENATED MODULE: ./node_modules/element-ui/src/utils/resize-event.js
+
+
+const isServer = typeof window === 'undefined';
+
+/* istanbul ignore next */
+const resizeHandler = function(entries) {
+  for (let entry of entries) {
+    const listeners = entry.target.__resizeListeners__ || [];
+    if (listeners.length) {
+      listeners.forEach(fn => {
+        fn();
+      });
+    }
   }
-  const targetObj = source.constructor === Array ? [] : {};
-  Object.keys(source).forEach((keys) => {
-    if (source[keys] && typeof source[keys] === 'object') {
-      targetObj[keys] = deepClone(source[keys]);
-    } else {
-      targetObj[keys] = source[keys];
-    }
-  });
-  return targetObj;
-}
+};
 
-function debounce(fn, delay) {
-  var ctx;
-  var args;
-  var timer = null;
-  var later = function () {
-    fn.apply(ctx, args);
-    // 当事件真正执行后，清空定时器
-    timer = null;
-  };
-  return function () {
-    ctx = this;
-    args = arguments;
-    // 当持续触发事件时，若发现事件触发的定时器已设置时，则清除之前的定时器
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
-    // 重新设置事件触发的定时器
-    timer = setTimeout(later, delay);
-  };
-}
+/* istanbul ignore next */
+const addResizeListener = function(element, fn) {
+  if (isServer) return;
+  if (!element.__resizeListeners__) {
+    element.__resizeListeners__ = [];
+    element.__ro__ = new ResizeObserver_es["default"](resizeHandler);
+    element.__ro__.observe(element);
+  }
+  element.__resizeListeners__.push(fn);
+};
 
-
+/* istanbul ignore next */
+const removeResizeListener = function(element, fn) {
+  if (!element || !element.__resizeListeners__) return;
+  element.__resizeListeners__.splice(element.__resizeListeners__.indexOf(fn), 1);
+  if (!element.__resizeListeners__.length) {
+    element.__ro__.disconnect();
+  }
+};
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=script&lang=js&
 //
@@ -61461,6 +61458,7 @@ function debounce(fn, delay) {
 //
 
 
+// import { debounce } from '../utils/index';
 /* harmony default export */ var hubary_expand_searchvue_type_script_lang_js_ = ({
   name: 'HubaryExpandSearch',
   components: {},
@@ -61480,6 +61478,7 @@ function debounce(fn, delay) {
     return {
       expand: false,
       formHeight: 0,
+      showControl: false,
     };
   },
   computed: {
@@ -61487,36 +61486,52 @@ function debounce(fn, delay) {
       if (this.formHeight) {
         return this.formHeight > this.oneItemHeight;
       }
-      return true;
+      return this.showControl;
+    },
+    wrapRef() {
+      return this.$refs.wrapRef;
     },
   },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     const resizeObserver = new ResizeObserver(
+  //       debounce((entries) => {
+  //         for (const entry of entries) {
+  //           // console.log("ResizeObserver entry", entry);
+  //           this.$nextTick(() => {
+  //             this.formHeight = entry.contentRect.height;
+  //           });
+  //         }
+  //       }, 100)
+  //     );
+  //     // console.log('%c initOnce is running', 'color:red');
+  //     // console.log('initOnce el', this.$refs.wrapRef);
+  //     if (window.ResizeObserver && this.$refs.wrapRef) {
+  //       resizeObserver.observe(this.$refs.wrapRef);
+  //       this.$once('hook:beforeDestroy', () => {
+  //         resizeObserver.disconnect(this.$refs.wrapRef);
+  //       });
+  //     } else {
+  //       this.showControl = true;
+  //     }
+  //   });
+  // },
   mounted() {
-    console.log('mounted');
     this.$nextTick(() => {
-      const resizeObserver = new ResizeObserver(
-        debounce((entries) => {
-          for (const entry of entries) {
-            // console.log("ResizeObserver entry", entry);
-            this.$nextTick(() => {
-              this.formHeight = entry.contentRect.height;
-            });
-          }
-        }, 100)
-      );
-      // console.log('%c initOnce is running', 'color:red');
-      // console.log('initOnce el', this.$refs.searchRef);
-      if (window.ResizeObserver && this.$refs.searchRef) {
-        resizeObserver.observe(this.$refs.searchRef);
-        this.$once('hook:beforeDestroy', () => {
-          resizeObserver.disconnect(this.$refs.searchRef);
-        });
-      }
+      addResizeListener(this.wrapRef, this.handleResize);
     });
   },
-  updated() {
-    console.log('updated');
+  beforeDestroy() {
+    if (this.wrapRef && this.handleResize) removeResizeListener(this.wrapRef, this.handleResize);
   },
   methods: {
+    handleResize() {
+      const wrapRef = this.wrapRef;
+      // console.log(wrapRef.getBoundingClientRect());
+      if (!wrapRef) return;
+      const height = wrapRef.getBoundingClientRect().height;
+      this.formHeight = Math.ceil(parseFloat(height));
+    },
     toggle() {
       this.expand = !this.expand;
     },
@@ -61531,8 +61546,8 @@ function debounce(fn, delay) {
 
 // CONCATENATED MODULE: ./packages/hubary-expand-search/index.vue?vue&type=script&lang=js&
  /* harmony default export */ var packages_hubary_expand_searchvue_type_script_lang_js_ = (hubary_expand_searchvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./packages/hubary-expand-search/index.vue?vue&type=style&index=0&id=780ae27e&lang=scss&scoped=true&
-var hubary_expand_searchvue_type_style_index_0_id_780ae27e_lang_scss_scoped_true_ = __webpack_require__("88aa");
+// EXTERNAL MODULE: ./packages/hubary-expand-search/index.vue?vue&type=style&index=0&id=1054795c&lang=scss&scoped=true&
+var hubary_expand_searchvue_type_style_index_0_id_1054795c_lang_scss_scoped_true_ = __webpack_require__("cff0");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -61649,7 +61664,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "780ae27e",
+  "1054795c",
   null
   
 )
@@ -61660,9 +61675,9 @@ var style = __webpack_require__("f657");
 
 // CONCATENATED MODULE: ./packages/hubary-dot/index.js
 /**
-* @Author   han.liu10
+* @Author   hubary
 * @Email    hubary@qq.com
-* @hubary-dot   借鉴suning uxcool
+* @hubary-dot   借鉴suning uxcool badge
 **/
 
 /* harmony default export */ var hubary_dot = ({
@@ -61754,12 +61769,59 @@ var style = __webpack_require__("f657");
   }
 });
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"abbb4270-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=06cf7329&scoped=true&
-var hubary_remote_searchvue_type_template_id_06cf7329_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-select',{attrs:{"filterable":"","remote":"","size":_vm.size,"clearable":"","no-data-text":_vm.noDataText,"reserve-keyword":"","remote-method":_vm.remoteMethod,"multiple":_vm.multiple,"loading":_vm.loading,"loading-text":_vm.loadingText,"placeholder":_vm.placeholder},on:{"change":_vm.onChange,"remove-tag":_vm.onRemoveTag},model:{value:(_vm.innerValue),callback:function ($$v) {_vm.innerValue=$$v},expression:"innerValue"}},_vm._l((_vm.options),function(item){return _c('el-option',{key:item.value,attrs:{"label":item.label,"value":item.value}})}),1)}
-var hubary_remote_searchvue_type_template_id_06cf7329_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8932884-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
+var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-select',{attrs:{"filterable":"","remote":"","size":_vm.size,"clearable":"","no-data-text":_vm.noDataText,"reserve-keyword":"","remote-method":_vm.remoteMethod,"multiple":_vm.multiple,"loading":_vm.loading,"loading-text":_vm.loadingText,"placeholder":_vm.placeholder},on:{"change":_vm.onChange,"remove-tag":_vm.onRemoveTag},model:{value:(_vm.innerValue),callback:function ($$v) {_vm.innerValue=$$v},expression:"innerValue"}},_vm._l((_vm.options),function(item){return _c('el-option',{key:item.value,attrs:{"label":item.label,"value":item.value}})}),1)}
+var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./packages/hubary-remote-search/index.vue?vue&type=template&id=06cf7329&scoped=true&
+// CONCATENATED MODULE: ./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
+
+// CONCATENATED MODULE: ./packages/utils/index.js
+/**
+ * This is just a simple version of deep copy
+ * Has a lot of edge cases bug
+ * If you want to use a perfect deep copy, use lodash's _.cloneDeep
+ * @param {Object} source
+ * @returns {Object}
+ */
+function deepClone(source) {
+  if (!source && typeof source !== 'object') {
+    throw new Error('error arguments', 'deepClone');
+  }
+  const targetObj = source.constructor === Array ? [] : {};
+  Object.keys(source).forEach((keys) => {
+    if (source[keys] && typeof source[keys] === 'object') {
+      targetObj[keys] = deepClone(source[keys]);
+    } else {
+      targetObj[keys] = source[keys];
+    }
+  });
+  return targetObj;
+}
+
+function debounce(fn, delay) {
+  var ctx;
+  var args;
+  var timer = null;
+  var later = function () {
+    fn.apply(ctx, args);
+    // 当事件真正执行后，清空定时器
+    timer = null;
+  };
+  return function () {
+    ctx = this;
+    args = arguments;
+    // 当持续触发事件时，若发现事件触发的定时器已设置时，则清除之前的定时器
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    // 重新设置事件触发的定时器
+    timer = setTimeout(later, delay);
+  };
+}
+
+
 
 // CONCATENATED MODULE: ./packages/utils/types.js
 function isString(obj) {
@@ -61902,7 +61964,7 @@ const isEmpty = function (val) {
     remoteApi: {
       type: Function,
       required: true,
-      validator: function(value) {
+      validator: function (value) {
         // console.log("validator isFunction(value)", isFunction(value));
         return isFunction(value);
       },
@@ -61922,7 +61984,7 @@ const isEmpty = function (val) {
     setOptions: {
       type: Function,
       required: false,
-      validator: function(value) {
+      validator: function (value) {
         // console.log("validator isFunction(value)", isFunction(value));
         return isFunction(value);
       },
@@ -61992,7 +62054,7 @@ const isEmpty = function (val) {
       this.$emit('change', selectedVal, selected);
     },
     // 远程搜索
-    remoteMethod: debounce(function(searchVal) {
+    remoteMethod: debounce(function (searchVal) {
       console.log('remoteMethod', searchVal);
       if (isString(searchVal) && searchVal.trim()) {
         if (searchVal.length < this.searchLimit) {
@@ -62055,23 +62117,32 @@ const isEmpty = function (val) {
 
 var hubary_remote_search_component = normalizeComponent(
   packages_hubary_remote_searchvue_type_script_lang_js_,
-  hubary_remote_searchvue_type_template_id_06cf7329_scoped_true_render,
-  hubary_remote_searchvue_type_template_id_06cf7329_scoped_true_staticRenderFns,
+  hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_render,
+  hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_staticRenderFns,
   false,
   null,
-  "06cf7329",
+  "0d59c97d",
   null
   
 )
 
 /* harmony default export */ var hubary_remote_search = (hubary_remote_search_component.exports);
+// EXTERNAL MODULE: ./package.json
+var package_0 = __webpack_require__("9224");
+
 // CONCATENATED MODULE: ./packages/index.js
 
 
 
 
-const components = [packages_el_dialog_limit, hubary_expand_search, hubary_dot, hubary_remote_search];
 
+// console.log('npm_package_version', packageV.version)
+const components = [
+  packages_el_dialog_limit,
+  hubary_expand_search,
+  hubary_dot,
+  hubary_remote_search
+];
 const install = function (Vue, opts = {}) {
   if (install.installed) return;
   components.map((component) => Vue.component(component.name, component));
@@ -62080,7 +62151,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 /* harmony default export */ var packages_0 = ({
-  version: '1.0.0',
+  version: package_0.version,
   install,
   ElDialogLimit: packages_el_dialog_limit, HubarySearchExpand: hubary_expand_search, HubaryDot: hubary_dot, HubaryRemoteSearch: hubary_remote_search
 });

@@ -34,24 +34,6 @@ module.exports = {
   //   }, // css预设器配置项
   //   requireModuleExtension: false, // 启用 CSS modules for all css / pre-processor files.
   // },
-  chainWebpack: (config) => {
-    config.module
-      .rule('bpmn')
-      .test(/\.bpmn$/)
-      .use('raw-loader')
-      .loader('raw-loader')
-      .end();
-    config.module
-      .rule('js')
-      .include.add('/packages')
-      .end()
-      .use('babel')
-      .loader('babel-loader')
-      .tap((options) => {
-        // 修改它的选项...
-        return options;
-      });
-  },
   //警告 webpack 的性能提示
   configureWebpack: {
     name: PACKAGE.name,
@@ -74,4 +56,33 @@ module.exports = {
       },
     },
   },
+  chainWebpack: (config) => {
+    config
+      .when(process.env.NODE_ENV !== 'development',
+        config => {
+          config.optimization.minimizer('terser').tap((args) => {
+            // remove console.*
+            args[0].terserOptions.compress.drop_console = true
+            // remove debugger
+            args[0].terserOptions.compress.drop_debugger = true
+            // remove console.log
+            args[0].terserOptions.compress.pure_funcs = ['console.log']
+            args[0].terserOptions.output = {
+              comments: false
+            };
+            return args
+          });
+        });
+    config.module
+      .rule('js')
+      .include.add('/packages')
+      .end()
+      .use('babel')
+      .loader('babel-loader')
+      .tap((options) => {
+        // 修改它的选项...
+        return options;
+      });
+  },
+
 };
