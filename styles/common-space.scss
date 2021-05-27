@@ -4,10 +4,21 @@
 * @对外提供以下样式
 * @margin   mt-x, mr-x, mb-x, ml-x
 * @padding  pt-x, pr-x, pb-x, pl-x
-* 使用方式  @include createSpace('hubary',(5, 10, 15, 16, 20))
-*@params 1 自定义前缀
-*@params 2 自定义间距
+* 使用方式  @include createSpace((5, 10, 15, 20),'hub-')
+* @params 1 自定义前缀
+* @params 2 自定义间距
+* 默认提供
+* .mt-5  .mt-10  .mt-15  .mt-20
+* .mr-5  .mr-10  .mr-15  .mr-20
+* .mb-5  .mb-10  .mb-15  .mb-20
+* .ml-5  .ml-10  .ml-15  .ml-20
+* 
+* .pt-5  .pt-10  .pt-15  .pt-20
+* .pr-5  .pr-10  .pr-15  .pr-20
+* .pb-5  .pb-10  .pb-15  .pb-20
+* .pl-5  .pl-10  .pl-15  .pl-20
 *****/
+
 @mixin createSpace(
   $space: (
     5,
