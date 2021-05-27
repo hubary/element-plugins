@@ -9,17 +9,18 @@
 *@params 2 自定义间距
 *****/
 @mixin createSpace(
-  $prefix: '',
   $space: (
     5,
     10,
     15,
     20,
-  )
+  ),
+  $prefix: ''
 ) {
   $list: ((t, top), (r, right), (b, bottom), (l, left));
-  @each $num in $space {
-    @each $v, $vi in $list {
+  @each $v, $vi in $list {
+    /* margin/padding-#{$vi}  #{$space}px*/
+    @each $num in $space {
       .#{$prefix}m#{$v}-#{$num} {
         margin-#{$vi}: #{$num}px;
       }
