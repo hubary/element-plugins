@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --dest dest packages/index.js",
-    "space": "npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css"
+    "space": "npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css",
+    "sync": "cnpm sync @hubary/element-plugins"
   },
   "main": "dest/element-plugins.common.js",
   "license": "MIT",
