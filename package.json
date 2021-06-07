@@ -17,7 +17,9 @@
     "packages",
     "examples",
     "styles",
-    "vue.config.js"
+    "vue.config.js",
+    "utils",
+    "utils-cjs"
   ],
   "dependencies": {
     "core-js": "^3.6.5",
