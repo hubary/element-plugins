@@ -18,3 +18,8 @@ exports.consoleLastModified = function consoleLastModified() {
     );
   }
 }
+// // 生产模式对document.lastModified进行打印
+// if (process.env.NODE_ENV === 'production') {
+//   const { consoleLastModified } = require('@hubary/element-plugins/utils-cjs/console-force')
+//   consoleLastModified()
+// }

@@ -48,9 +48,9 @@
     "element-ui": "^2.12.0"
   },
   "bugs": {
-    "url": "https://github.com/Hubary/element-plugins/issues"
+    "url": "https://github.com/hubary/element-plugins/issues"
   },
-  "homepage": "https://github.com/Hubary/element-plugins",
+  "homepage": "https://github.com/hubary/element-plugins",
   "keywords": [
     "@hubary/element-plugins",
     "element-plugins",
@@ -61,7 +61,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hubary/element-plugins.git"
+    "url": "https://github.com/hubary/element-plugins.git"
   },
   "style": "dest/element-plugins.css"
 }
