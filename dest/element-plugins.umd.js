@@ -53518,7 +53518,7 @@ module.exports = document && document.documentElement;
 /***/ "9224":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"@hubary/element-plugins\",\"version\":\"1.1.2\",\"private\":false,\"scripts\":{\"serve\":\"vue-cli-service serve\",\"build\":\"vue-cli-service build\",\"lint\":\"vue-cli-service lint\",\"lib\":\"vue-cli-service build --target lib --dest dest packages/index.js\",\"space\":\"npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css\",\"sync\":\"cnpm sync @hubary/element-plugins\"},\"main\":\"dest/element-plugins.common.js\",\"license\":\"MIT\",\"files\":[\"dest\",\"packages\",\"examples\",\"styles\",\"vue.config.js\",\"utils\",\"utils-cjs\"],\"dependencies\":{\"core-js\":\"^3.6.5\",\"vue-router\":\"^3.2.0\"},\"devDependencies\":{\"@vue/cli-plugin-babel\":\"~4.5.0\",\"@vue/cli-plugin-eslint\":\"~4.5.0\",\"@vue/cli-plugin-router\":\"~4.5.0\",\"@vue/cli-service\":\"~4.5.0\",\"@vue/eslint-config-prettier\":\"^6.0.0\",\"babel-eslint\":\"^10.1.0\",\"eslint\":\"^6.7.2\",\"eslint-plugin-prettier\":\"^3.1.3\",\"eslint-plugin-vue\":\"^6.2.2\",\"node-sass\":\"^4.14.1\",\"prettier\":\"^1.19.1\",\"raw-loader\":\"^4.0.2\",\"sass-loader\":\"^8.0.2\",\"vue-template-compiler\":\"^2.6.11\",\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"peerDependencies\":{\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"bugs\":{\"url\":\"https://github.com/Hubary/element-plugins/issues\"},\"homepage\":\"https://github.com/Hubary/element-plugins\",\"keywords\":[\"@hubary/element-plugins\",\"element-plugins\",\"hubary\",\"vue\",\"element\",\"element-ui\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/Hubary/element-plugins.git\"},\"style\":\"dest/element-plugins.css\"}");
+module.exports = JSON.parse("{\"name\":\"@hubary/element-plugins\",\"version\":\"1.1.3\",\"private\":false,\"scripts\":{\"serve\":\"vue-cli-service serve\",\"build\":\"vue-cli-service build\",\"lint\":\"vue-cli-service lint\",\"lib\":\"vue-cli-service build --target lib --dest dest packages/index.js\",\"space\":\"npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css\",\"sync\":\"cnpm sync @hubary/element-plugins\"},\"main\":\"dest/element-plugins.common.js\",\"license\":\"MIT\",\"files\":[\"dest\",\"packages\",\"examples\",\"styles\",\"vue.config.js\",\"utils\",\"utils-cjs\"],\"dependencies\":{\"core-js\":\"^3.6.5\",\"vue-router\":\"^3.2.0\"},\"devDependencies\":{\"@vue/cli-plugin-babel\":\"~4.5.0\",\"@vue/cli-plugin-eslint\":\"~4.5.0\",\"@vue/cli-plugin-router\":\"~4.5.0\",\"@vue/cli-service\":\"~4.5.0\",\"@vue/eslint-config-prettier\":\"^6.0.0\",\"babel-eslint\":\"^10.1.0\",\"eslint\":\"^6.7.2\",\"eslint-plugin-prettier\":\"^3.1.3\",\"eslint-plugin-vue\":\"^6.2.2\",\"node-sass\":\"^4.14.1\",\"prettier\":\"^1.19.1\",\"raw-loader\":\"^4.0.2\",\"sass-loader\":\"^8.0.2\",\"vue-template-compiler\":\"^2.6.11\",\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"peerDependencies\":{\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"bugs\":{\"url\":\"https://github.com/hubary/element-plugins/issues\"},\"homepage\":\"https://github.com/hubary/element-plugins\",\"keywords\":[\"@hubary/element-plugins\",\"element-plugins\",\"hubary\",\"vue\",\"element\",\"element-ui\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/hubary/element-plugins.git\"},\"style\":\"dest/element-plugins.css\",\"typings\":\"./types/index.js\"}");
 
 /***/ }),
 
@@ -61229,10 +61229,10 @@ var el_dialog_limit = __webpack_require__("9985");
 
 
 /**
-* @Author   hubary
-* @Email    hubary@qq.com
-* @Description   el-dialog定制化高阶组件,用于统一弹窗样式以及大小
-**/
+ * @Author   hubary
+ * @Email    hubary@qq.com
+ * @Description   el-dialog定制化高阶组件,用于统一弹窗样式以及大小
+ **/
 /* harmony default export */ var packages_el_dialog_limit = ({
   name: 'ElDialogLimit',
   props: {
@@ -61243,12 +61243,21 @@ var el_dialog_limit = __webpack_require__("9985");
       default: 'small',
       validator(type) {
         if (type && !['medium', 'small', 'mini', 'fullscreen'].includes(type)) {
-          console.error(
-            'size类型必须为:' + ['medium', 'small', 'mini', 'fullscreen'].join('、')
-          )
+          console.error('size类型必须为:' + ['medium', 'small', 'mini', 'fullscreen'].join('、'));
         }
-        return true
-      }
+        return true;
+      },
+    },
+    sizeConfig: {
+      type: Object,
+      default: () => {
+        return {
+          mini: '410px',
+          small: '590px',
+          medium: '850px',
+          fullscreen: '100%',
+        };
+      },
     },
     // 是否可以通过点击 modal 关闭 Dialog,默认关闭,防止误触
     closeOnClickModal: {
@@ -61269,52 +61278,48 @@ var el_dialog_limit = __webpack_require__("9985");
   data() {
     return {
       loadingInstance: null, //  Loading 服务实例
-    }
+    };
   },
   computed: {
     thisWidth() {
-      let num = '410px';
+      const { size = 'mini', sizeConfig } = this;
+      let num = sizeConfig[size] || '410px';
       if (this.size === 'medium') {
-        num = '850px';
         if (this.$el && this.$el.firstChild) {
           this.$el.firstChild.style.height = '70%';
         }
-        if (document.querySelector(".el-dialog__body")) {
-          document.querySelector(".el-dialog__body").style.maxHeight = "calc(100% - 112px)";
-          document.querySelector(".el-dialog__body").style.overflowY = "auto";
+        if (document.querySelector('.el-dialog__body')) {
+          document.querySelector('.el-dialog__body').style.maxHeight = 'calc(100% - 112px)';
+          document.querySelector('.el-dialog__body').style.overflowY = 'auto';
         }
       } else if (this.size === 'small') {
-        num = '590px';
         if (this.$el && this.$el.firstChild) {
           this.$el.firstChild.style.height = 'auto';
         }
-        if (document.querySelector(".el-dialog__body")) {
-          document.querySelector(".el-dialog__body").style.maxHeight = "auto";
+        if (document.querySelector('.el-dialog__body')) {
+          document.querySelector('.el-dialog__body').style.maxHeight = 'auto';
         }
       } else if (this.size === 'fullscreen') {
-        num = '100%';
         if (this.$el && this.$el.firstChild) {
           this.$el.firstChild.style.height = '100%';
           this.$el.firstChild.style.maxHeight = '100%';
         }
-        if (document.querySelector(".el-dialog__body")) {
-          document.querySelector(".el-dialog__body").style.maxHeight = "100%";
-          document.querySelector(".el-dialog__body").style.overflowY = "auto";
+        if (document.querySelector('.el-dialog__body')) {
+          document.querySelector('.el-dialog__body').style.maxHeight = '100%';
+          document.querySelector('.el-dialog__body').style.overflowY = 'auto';
         }
       } else {
         if (this.$el && this.$el.firstChild) {
           this.$el.firstChild.style.height = 'auto';
         }
-        if (document.querySelector(".el-dialog__body")) {
-          document.querySelector(".el-dialog__body").style.maxHeight = "auto";
+        if (document.querySelector('.el-dialog__body')) {
+          document.querySelector('.el-dialog__body').style.maxHeight = 'auto';
         }
       }
-      return num
-    }
+      return num;
+    },
   },
-  created() {
-
-  },
+  created() { },
   watch: {
     loading: {
       handler(newVal, oldVal) {
@@ -61326,23 +61331,23 @@ var el_dialog_limit = __webpack_require__("9985");
               spinner: 'el-icon-loading',
               // background: 'rgba(0, 0, 0, 0.7)',
               target: document.querySelector('.el-dialog__wrapper[visible=visible] .el-dialog'),
-            })
+            });
           } else if (oldVal && !newVal && this.loadingInstance) {
-            this.loadingInstance.close()
+            this.loadingInstance.close();
           }
         } catch (error) {
           if (this.loadingInstance) {
-            this.loadingInstance.close()
+            this.loadingInstance.close();
           }
           this.loadingInstance = null;
         }
       },
       immediate: true,
-    }
+    },
   },
   beforeDestroy() {
     if (this.loadingInstance) {
-      this.loadingInstance.close()
+      this.loadingInstance.close();
     }
     this.loadingInstance = null;
   },
@@ -61370,15 +61375,15 @@ var el_dialog_limit = __webpack_require__("9985");
         class: {
           'han-dialog-limit': true,
           'beautify-scrool': this.beautifyScrool,
-          "han-dialog-limit-fullscreen": this.size === 'fullscreen'
+          'han-dialog-limit-fullscreen': this.size === 'fullscreen',
         },
       },
       slots
     );
-  }
+  },
 });
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"20cdbbfa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3f74ca8a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hubary-search-frame",style:({
     height: _vm.expand ? 'auto' : _vm.oneItemHeight + 'px',
     overflow: 'hidden',
@@ -61778,7 +61783,7 @@ var style = __webpack_require__("f657");
   }
 });
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"20cdbbfa-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3f74ca8a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
 var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-select',{attrs:{"filterable":"","remote":"","size":_vm.size,"clearable":"","no-data-text":_vm.noDataText,"reserve-keyword":"","remote-method":_vm.remoteMethod,"multiple":_vm.multiple,"loading":_vm.loading,"loading-text":_vm.loadingText,"placeholder":_vm.placeholder},on:{"change":_vm.onChange,"remove-tag":_vm.onRemoveTag},model:{value:(_vm.innerValue),callback:function ($$v) {_vm.innerValue=$$v},expression:"innerValue"}},_vm._l((_vm.options),function(item){return _c('el-option',{key:item.value,attrs:{"label":item.label,"value":item.value}})}),1)}
 var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_staticRenderFns = []
 
