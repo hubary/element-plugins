@@ -2,17 +2,19 @@
 * @Author:  hubary
 * @Email:   hubary@qq.com
 * @对外提供以下样式
-* @margin   mt-x, mr-x, mb-x, ml-x
-* @padding  pt-x, pr-x, pb-x, pl-x
+* @margin   m-x, mt-x, mr-x, mb-x, ml-x
+* @padding  m-x, pt-x, pr-x, pb-x, pl-x
 * 使用方式  @include createSpace((5, 10, 15, 20),'hub-')
 * @params 1 自定义前缀
 * @params 2 自定义间距
 * 默认提供
+* .m-5   .m-10   .m-15   .m-20
 * .mt-5  .mt-10  .mt-15  .mt-20
 * .mr-5  .mr-10  .mr-15  .mr-20
 * .mb-5  .mb-10  .mb-15  .mb-20
 * .ml-5  .ml-10  .ml-15  .ml-20
 * 
+* .p-5   .p-10   .p-15   .p-20
 * .pt-5  .pt-10  .pt-15  .pt-20
 * .pr-5  .pr-10  .pr-15  .pr-20
 * .pb-5  .pb-10  .pb-15  .pb-20
@@ -29,9 +31,22 @@
   $prefix: ''
 ) {
   $list: ((t, top), (r, right), (b, bottom), (l, left));
-  @each $v, $vi in $list {
-    /* margin/padding-#{$vi}  #{$space}px*/
-    @each $num in $space {
+  @each $num in $space {
+    /* margin/padding  #{$space}px*/
+    .#{$prefix}m-#{$num} {
+      margin-top: #{$num}px;
+      margin-right: #{$num}px;
+      margin-bottom: #{$num}px;
+      margin-left: #{$num}px;
+    }
+    .#{$prefix}p-#{$num} {
+      padding-top: #{$num}px;
+      padding-right: #{$num}px;
+      padding-bottom: #{$num}px;
+      padding-left: #{$num}px;
+    }
+    @each $v, $vi in $list {
+      /* margin/padding-#{$vi}  #{$space}px*/
       .#{$prefix}m#{$v}-#{$num} {
         margin-#{$vi}: #{$num}px;
       }

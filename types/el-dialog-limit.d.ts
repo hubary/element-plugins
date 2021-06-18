@@ -1,7 +1,6 @@
-import { MIN_SAFE_INTEGER } from 'core-js/core/number'
 import { VNode } from 'vue'
 import { ElementUIComponent } from './component'
-enum Size { mini, small, medium, fullscreen }
+export enum Size { mini, small, medium, fullscreen }
 export interface DialogSlots {
   /** Content of the Dialog */
   default: VNode[],
@@ -20,7 +19,7 @@ export declare class ElDialogLimit extends ElementUIComponent {
   /** Title of Dialog */
   title: string
 
-  size: Size,
+  size: Size
   /** Width of Dialog */
   width: string
 
