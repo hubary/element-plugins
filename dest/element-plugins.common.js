@@ -53509,7 +53509,7 @@ module.exports = document && document.documentElement;
 /***/ "9224":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"@hubary/element-plugins\",\"version\":\"1.1.3\",\"private\":false,\"scripts\":{\"serve\":\"vue-cli-service serve\",\"build\":\"vue-cli-service build\",\"lint\":\"vue-cli-service lint\",\"lib\":\"vue-cli-service build --target lib --dest dest packages/index.js\",\"space\":\"npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css\",\"sync\":\"cnpm sync @hubary/element-plugins\"},\"main\":\"dest/element-plugins.common.js\",\"license\":\"MIT\",\"files\":[\"dest\",\"packages\",\"examples\",\"styles\",\"vue.config.js\",\"utils\",\"utils-cjs\"],\"dependencies\":{\"core-js\":\"^3.6.5\",\"vue-router\":\"^3.2.0\"},\"devDependencies\":{\"@vue/cli-plugin-babel\":\"~4.5.0\",\"@vue/cli-plugin-eslint\":\"~4.5.0\",\"@vue/cli-plugin-router\":\"~4.5.0\",\"@vue/cli-service\":\"~4.5.0\",\"@vue/eslint-config-prettier\":\"^6.0.0\",\"babel-eslint\":\"^10.1.0\",\"eslint\":\"^6.7.2\",\"eslint-plugin-prettier\":\"^3.1.3\",\"eslint-plugin-vue\":\"^6.2.2\",\"node-sass\":\"^4.14.1\",\"prettier\":\"^1.19.1\",\"raw-loader\":\"^4.0.2\",\"sass-loader\":\"^8.0.2\",\"vue-template-compiler\":\"^2.6.11\",\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"peerDependencies\":{\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"bugs\":{\"url\":\"https://github.com/hubary/element-plugins/issues\"},\"homepage\":\"https://github.com/hubary/element-plugins\",\"keywords\":[\"@hubary/element-plugins\",\"element-plugins\",\"hubary\",\"vue\",\"element\",\"element-ui\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/hubary/element-plugins.git\"},\"style\":\"dest/element-plugins.css\",\"typings\":\"./types/index.js\"}");
+module.exports = JSON.parse("{\"name\":\"@hubary/element-plugins\",\"version\":\"1.1.4\",\"private\":false,\"scripts\":{\"serve\":\"vue-cli-service serve\",\"build\":\"vue-cli-service build\",\"lint\":\"vue-cli-service lint\",\"lib\":\"vue-cli-service build --target lib --dest dest packages/index.js\",\"space\":\"npx sass --no-source-map -s expanded styles/create.scss:styles/common-space.css\",\"sync\":\"cnpm sync @hubary/element-plugins\"},\"main\":\"dest/element-plugins.common.js\",\"license\":\"MIT\",\"files\":[\"dest\",\"packages\",\"examples\",\"styles\",\"vue.config.js\",\"utils\",\"utils-cjs\"],\"dependencies\":{\"core-js\":\"^3.6.5\",\"vue-router\":\"^3.2.0\"},\"devDependencies\":{\"@vue/cli-plugin-babel\":\"~4.5.0\",\"@vue/cli-plugin-eslint\":\"~4.5.0\",\"@vue/cli-plugin-router\":\"~4.5.0\",\"@vue/cli-service\":\"~4.5.0\",\"@vue/eslint-config-prettier\":\"^6.0.0\",\"babel-eslint\":\"^10.1.0\",\"eslint\":\"^6.7.2\",\"eslint-plugin-prettier\":\"^3.1.3\",\"eslint-plugin-vue\":\"^6.2.2\",\"node-sass\":\"^4.14.1\",\"prettier\":\"^1.19.1\",\"raw-loader\":\"^4.0.2\",\"sass-loader\":\"^8.0.2\",\"vue-template-compiler\":\"^2.6.11\",\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"peerDependencies\":{\"vue\":\"^2.5.17\",\"element-ui\":\"^2.12.0\"},\"bugs\":{\"url\":\"https://github.com/hubary/element-plugins/issues\"},\"homepage\":\"https://github.com/hubary/element-plugins\",\"keywords\":[\"@hubary/element-plugins\",\"element-plugins\",\"hubary\",\"vue\",\"element\",\"element-ui\"],\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/hubary/element-plugins.git\"},\"style\":\"dest/element-plugins.css\"}");
 
 /***/ }),
 
@@ -61260,10 +61260,19 @@ var el_dialog_limit = __webpack_require__("9985");
       type: Boolean,
       default: true,
     },
-    // 弹窗loading,已用于角色授权
+    // 弹窗loading
     loading: {
       type: Boolean,
       default: false,
+    },
+    // 整个弹窗loading配置
+    loadingOptions: {
+      default: () => ({}),
+      type: Object,
+    },
+    top: {
+      type: String,
+      default: '12vh',
     },
   },
   data() {
@@ -61309,20 +61318,25 @@ var el_dialog_limit = __webpack_require__("9985");
       }
       return num;
     },
+    currentLoadingOptions() {
+      const defaultOptions = {
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        // background: 'rgba(0, 0, 0, 0.7)',
+        target: '.el-dialog__wrapper[visible=visible] .el-dialog',
+      };
+      Object.assign(defaultOptions, this.loadingOptions);
+      return defaultOptions;
+    },
   },
-  created() { },
+  created() {},
   watch: {
     loading: {
       handler(newVal, oldVal) {
         try {
           if (newVal && !oldVal) {
-            this.loadingInstance = this.$loading({
-              lock: true,
-              text: 'Loading',
-              spinner: 'el-icon-loading',
-              // background: 'rgba(0, 0, 0, 0.7)',
-              target: document.querySelector('.el-dialog__wrapper[visible=visible] .el-dialog'),
-            });
+            this.loadingInstance = this.$loading(this.currentLoadingOptions);
           } else if (oldVal && !newVal && this.loadingInstance) {
             this.loadingInstance.close();
           }
@@ -61334,6 +61348,13 @@ var el_dialog_limit = __webpack_require__("9985");
         }
       },
       immediate: true,
+    },
+    'currentLoadingOptions.text'(newVal, oldVal) {
+      if (newVal !== oldVal && this.loadingInstance) {
+        if (typeof this.loadingInstance.setText === 'function') {
+          this.loadingInstance.setText(newVal);
+        }
+      }
     },
   },
   beforeDestroy() {
@@ -61374,7 +61395,7 @@ var el_dialog_limit = __webpack_require__("9985");
   },
 });
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3f74ca8a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"56d9c956-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-expand-search/index.vue?vue&type=template&id=1054795c&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hubary-search-frame",style:({
     height: _vm.expand ? 'auto' : _vm.oneItemHeight + 'px',
     overflow: 'hidden',
@@ -61774,7 +61795,7 @@ var style = __webpack_require__("f657");
   }
 });
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3f74ca8a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"56d9c956-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./packages/hubary-remote-search/index.vue?vue&type=template&id=0d59c97d&scoped=true&
 var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-select',{attrs:{"filterable":"","remote":"","size":_vm.size,"clearable":"","no-data-text":_vm.noDataText,"reserve-keyword":"","remote-method":_vm.remoteMethod,"multiple":_vm.multiple,"loading":_vm.loading,"loading-text":_vm.loadingText,"placeholder":_vm.placeholder},on:{"change":_vm.onChange,"remove-tag":_vm.onRemoveTag},model:{value:(_vm.innerValue),callback:function ($$v) {_vm.innerValue=$$v},expression:"innerValue"}},_vm._l((_vm.options),function(item){return _c('el-option',{key:item.value,attrs:{"label":item.label,"value":item.value}})}),1)}
 var hubary_remote_searchvue_type_template_id_0d59c97d_scoped_true_staticRenderFns = []
 
@@ -61826,7 +61847,10 @@ function debounce(fn, delay) {
   };
 }
 
-
+const RandomString = () =>
+  Math.random()
+    .toString(36)
+    .slice(2);
 
 // CONCATENATED MODULE: ./packages/utils/types.js
 function isString(obj) {
@@ -61862,7 +61886,6 @@ const isDefined = (val) => {
 function isInclude(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
-
 
 const isEmpty = function (val) {
   // null or undefined
