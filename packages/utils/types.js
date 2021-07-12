@@ -32,7 +32,6 @@ export function isInclude(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-
 export const isEmpty = function (val) {
   // null or undefined
   if (val == null) return true;

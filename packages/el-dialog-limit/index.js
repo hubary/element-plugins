@@ -46,6 +46,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    loadingOptions: {
+      default: () => ({}),
+      type: Object,
+    },
+    top: {
+      type: String,
+      default: '12vh',
+    },
   },
   data() {
     return {
@@ -90,20 +98,25 @@ export default {
       }
       return num;
     },
+    currentLoadingOptions() {
+      const defaultOptions = {
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        // background: 'rgba(0, 0, 0, 0.7)',
+        target: '.el-dialog__wrapper[visible=visible] .el-dialog',
+      };
+      Object.assign(defaultOptions, this.loadingOptions);
+      return defaultOptions;
+    },
   },
-  created() { },
+  created() {},
   watch: {
     loading: {
       handler(newVal, oldVal) {
         try {
           if (newVal && !oldVal) {
-            this.loadingInstance = this.$loading({
-              lock: true,
-              text: 'Loading',
-              spinner: 'el-icon-loading',
-              // background: 'rgba(0, 0, 0, 0.7)',
-              target: document.querySelector('.el-dialog__wrapper[visible=visible] .el-dialog'),
-            });
+            this.loadingInstance = this.$loading(this.currentLoadingOptions);
           } else if (oldVal && !newVal && this.loadingInstance) {
             this.loadingInstance.close();
           }
@@ -115,6 +128,13 @@ export default {
         }
       },
       immediate: true,
+    },
+    'currentLoadingOptions.text'(newVal, oldVal) {
+      if (newVal !== oldVal && this.loadingInstance) {
+        if (typeof this.loadingInstance.setText === 'function') {
+          this.loadingInstance.setText(newVal);
+        }
+      }
     },
   },
   beforeDestroy() {

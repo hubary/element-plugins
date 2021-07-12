@@ -42,4 +42,7 @@ export function debounce(fn, delay) {
   };
 }
 
-
+export const RandomString = () =>
+  Math.random()
+    .toString(36)
+    .slice(2);
