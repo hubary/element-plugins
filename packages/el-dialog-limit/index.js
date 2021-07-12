@@ -41,11 +41,12 @@ export default {
       type: Boolean,
       default: true,
     },
-    // 弹窗loading,已用于角色授权
+    // 弹窗loading
     loading: {
       type: Boolean,
       default: false,
     },
+    // 整个弹窗loading配置
     loadingOptions: {
       default: () => ({}),
       type: Object,
