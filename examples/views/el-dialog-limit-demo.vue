@@ -15,8 +15,13 @@
       :loading="loading"
       :loadingOptions="loadingOptions"
     >
-      <span slot="title">标题{{ current }}</span>
-      <span>这是一段信息</span>
+      <div slot="title">
+        <span>标题{{ current }} </span>
+        <el-button type="text" @click="setFullscreen" style="float: right; margin-right: 30px"
+          >全屏</el-button
+        >
+      </div>
+      <div style="height: 1300px; background: #f2f2f2"></div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="visible = false">取消</el-button>
       </span>
@@ -35,6 +40,7 @@ export default {
       visible: false,
       sizeType: ['mini', 'small', 'medium', 'fullscreen'],
       current: 'small',
+      currentOld: '',
       loading: false,
       loadingOptions: {
         text: '加载中',
@@ -49,16 +55,23 @@ export default {
     change(current) {
       this.current = current;
       this.visible = true;
-      setTimeout(() => {
-        this.loading = true;
-      }, 2000);
-      this.loadingOptions.text = '文件正在上传中,请稍后...';
-      setTimeout(() => {
-        this.loadingOptions.text = '服务部署中,请稍后...';
-      }, 4000);
-      setTimeout(() => {
-        this.loading = false;
-      }, 6000);
+      // setTimeout(() => {
+      //   this.loading = true;
+      // }, 2000);
+      // this.loadingOptions.text = '文件正在上传中,请稍后...';
+      // setTimeout(() => {
+      //   this.loadingOptions.text = '服务部署中,请稍后...';
+      // }, 4000);
+      // setTimeout(() => {
+      //   this.loading = false;
+      // }, 6000);
+    },
+    setFullscreen() {
+      if (this.current === 'fullscreen') {
+        this.current = this.currentOld;
+      } else {
+        [this.currentOld, this.current] = [this.current, 'fullscreen'];
+      }
     },
   },
 };

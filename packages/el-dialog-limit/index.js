@@ -5,6 +5,29 @@ import './index.scss';
  * @Email    hubary@qq.com
  * @Description   el-dialog定制化高阶组件,用于统一弹窗样式以及大小
  **/
+
+const styleConfig = {
+  mini: {
+    height: 'auto',
+    maxHeight: 'auto',
+    overflowY: 'auto',
+  },
+  small: {
+    height: 'auto',
+    maxHeight: 'auto',
+    overflowY: 'auto',
+  },
+  medium: {
+    height: '70%',
+    maxHeight: 'calc(100% - 112px)',
+    overflowY: 'auto',
+  },
+  fullscreen: {
+    height: '100%',
+    maxHeight: '100%',
+    overflowY: 'auto',
+  },
+};
 export default {
   name: 'ElDialogLimit',
   props: {
@@ -65,37 +88,13 @@ export default {
     thisWidth() {
       const { size = 'mini', sizeConfig } = this;
       let num = sizeConfig[size] || '410px';
-      if (this.size === 'medium') {
-        if (this.$el && this.$el.firstChild) {
-          this.$el.firstChild.style.height = '70%';
-        }
-        if (document.querySelector('.el-dialog__body')) {
-          document.querySelector('.el-dialog__body').style.maxHeight = 'calc(100% - 112px)';
-          document.querySelector('.el-dialog__body').style.overflowY = 'auto';
-        }
-      } else if (this.size === 'small') {
-        if (this.$el && this.$el.firstChild) {
-          this.$el.firstChild.style.height = 'auto';
-        }
-        if (document.querySelector('.el-dialog__body')) {
-          document.querySelector('.el-dialog__body').style.maxHeight = 'auto';
-        }
-      } else if (this.size === 'fullscreen') {
-        if (this.$el && this.$el.firstChild) {
-          this.$el.firstChild.style.height = '100%';
-          this.$el.firstChild.style.maxHeight = '100%';
-        }
-        if (document.querySelector('.el-dialog__body')) {
-          document.querySelector('.el-dialog__body').style.maxHeight = '100%';
-          document.querySelector('.el-dialog__body').style.overflowY = 'auto';
-        }
-      } else {
-        if (this.$el && this.$el.firstChild) {
-          this.$el.firstChild.style.height = 'auto';
-        }
-        if (document.querySelector('.el-dialog__body')) {
-          document.querySelector('.el-dialog__body').style.maxHeight = 'auto';
-        }
+      const el_body = document.querySelector('.el-dialog__body');
+      if (this.$el && this.$el.firstChild) {
+        this.$el.firstChild.style.height = styleConfig[size].height;
+      }
+      if (el_body) {
+        el_body.style.maxHeight = styleConfig[size].maxHeight;
+        el_body.style.overflowY = styleConfig[size].overflowY;
       }
       return num;
     },
