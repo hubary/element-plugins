@@ -21,7 +21,16 @@
     @change="onChange"
     @remove-tag="onRemoveTag"
   >
-    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+    <template v-if="$scopedSlots.default">
+      <slot name="default" :options="options"></slot>
+    </template>
+    <el-option
+      v-else
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value"
+    >
     </el-option>
   </el-select>
 </template>
