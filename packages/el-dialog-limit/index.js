@@ -86,9 +86,11 @@ export default {
   },
   computed: {
     thisWidth() {
-      const { size = 'mini', sizeConfig } = this;
+      const { sizeConfig } = this;
+      const size = this.size || 'small';
       let num = sizeConfig[size] || '410px';
       const el_body = document.querySelector('.el-dialog__body');
+      console.log('thisWidth', size);
       if (this.$el && this.$el.firstChild) {
         this.$el.firstChild.style.height = styleConfig[size].height;
       }

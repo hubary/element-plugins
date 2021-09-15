@@ -17,7 +17,11 @@
     >
       <div slot="title">
         <span>标题{{ current }} </span>
-        <el-button type="text" @click="setFullscreen" style="float: right; margin-right: 30px"
+        <el-button
+          v-show="['medium', 'fullscreen'].includes(current)"
+          type="text"
+          @click="setFullscreen"
+          style="float: right; margin-right: 30px"
           >全屏</el-button
         >
       </div>

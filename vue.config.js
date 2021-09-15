@@ -10,9 +10,10 @@ module.exports = {
       template: 'examples/index.html',
       // 输出文件名
       filename: 'index.html',
+      title: PACKAGE.name.split('/')[1],
     },
   },
-  lintOnSave: false,  // 暂时关闭
+  lintOnSave: false, // 暂时关闭
   productionSourceMap: false,
   devServer: {
     port: 3000,
@@ -51,28 +52,26 @@ module.exports = {
       //生成文件的最大体积 整数类型（以字节为单位 300k）
       maxAssetSize: 30000000,
       //只给出 js 文件的性能提示
-      assetFilter: function (assetFilename) {
+      assetFilter: function(assetFilename) {
         return assetFilename.endsWith('.js');
       },
     },
   },
   chainWebpack: (config) => {
-    config
-      .when(process.env.NODE_ENV !== 'development',
-        config => {
-          config.optimization.minimizer('terser').tap((args) => {
-            // remove console.*
-            args[0].terserOptions.compress.drop_console = true
-            // remove debugger
-            args[0].terserOptions.compress.drop_debugger = true
-            // remove console.log
-            args[0].terserOptions.compress.pure_funcs = ['console.log']
-            args[0].terserOptions.output = {
-              comments: false
-            };
-            return args
-          });
-        });
+    config.when(process.env.NODE_ENV !== 'development', (config) => {
+      config.optimization.minimizer('terser').tap((args) => {
+        // remove console.*
+        args[0].terserOptions.compress.drop_console = true;
+        // remove debugger
+        args[0].terserOptions.compress.drop_debugger = true;
+        // remove console.log
+        args[0].terserOptions.compress.pure_funcs = ['console.log'];
+        args[0].terserOptions.output = {
+          comments: false,
+        };
+        return args;
+      });
+    });
     config.module
       .rule('js')
       .include.add('/packages')
@@ -84,5 +83,4 @@ module.exports = {
         return options;
       });
   },
-
 };

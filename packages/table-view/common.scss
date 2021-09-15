@@ -1,0 +1,17 @@
+.g-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .button-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .g-table {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}

@@ -6,9 +6,9 @@
 <template>
   <div
     class="hubary-search-frame"
+    :class="{ 'height-animation': isAnimation }"
     :style="{
-      height: expand ? 'auto' : oneItemHeight + 'px',
-      overflow: 'hidden',
+      height: boxHeight,
     }"
   >
     <div ref="wrapRef" class="hubary-search-form">
@@ -21,7 +21,7 @@
           <i :class="!expand ? 'el-icon-arrow-right' : 'el-icon-arrow-down'" />
         </a>
       </span>
-      <template v-if="$slots.buttons && buttons.length == 2">
+      <template v-if="$slots.buttons">
         <slot name="buttons"></slot>
       </template>
       <template v-else>
@@ -45,11 +45,15 @@ export default {
       type: Number,
       default: 51,
     },
-    buttons: {
-      type: Array,
-      default: () => {
-        return [{ text: '查询', size: 'mini' }];
-      },
+    // 默认展开还是收起
+    expandDefault: {
+      type: Boolean,
+      default: false,
+    },
+    // 是否开启高度动画过渡
+    isAnimation: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -68,6 +72,12 @@ export default {
     },
     wrapRef() {
       return this.$refs.wrapRef;
+    },
+    boxHeight() {
+      if (this.expand) {
+        return this.formHeight ? this.formHeight + 'px' : 'auto';
+      }
+      return this.oneItemHeight + 'px';
     },
   },
   // mounted() {
@@ -94,6 +104,9 @@ export default {
   //     }
   //   });
   // },
+  created() {
+    this.expand = this.expandDefault;
+  },
   mounted() {
     this.$nextTick(() => {
       addResizeListener(this.wrapRef, this.handleResize);
@@ -125,8 +138,12 @@ export default {
 
 <style lang="scss" scoped>
 $right_width: 220px;
+.height-animation {
+  transition: height 0.5s;
+}
 .hubary-search-frame {
   display: flex;
+  overflow: hidden;
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;

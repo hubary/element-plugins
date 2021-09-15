@@ -6,8 +6,18 @@
 <template>
   <div>
     <h2 class="mb-20">hubary-expand-search</h2>
-    <p class="mt-10 mb-10">单行放不下，添加展开收起</p>
-    <hubary-expand-search @search="onSearch" @reset="onReset">
+    <el-row type="flex" justify="space-bewteen">
+      <el-col>
+        <p class="mt-10 mb-10">单行放不下，添加展开收起</p>
+      </el-col>
+      <el-col> 是否开启高度折叠过渡动画<el-switch v-model="isAnimation"></el-switch> </el-col>
+    </el-row>
+    <hubary-expand-search
+      :isAnimation="isAnimation"
+      :expandDefault="true"
+      @search="onSearch"
+      @reset="onReset"
+    >
       <el-form :inline="true" :model="formInline" label-width="120px" class="demo-form-inline">
         <el-form-item label="审批人">
           <el-input v-model="formInline.user" placeholder="审批人" class="form-item"></el-input>
@@ -83,6 +93,7 @@ export default {
         user: '',
         region: '',
       },
+      isAnimation: true,
     };
   },
   computed: {},
