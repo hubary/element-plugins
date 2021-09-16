@@ -17,71 +17,73 @@
     >
       <slot name="prepend"></slot>
       <template v-for="(item, index) in searchForm">
-        <el-form-item
-          v-if="item.show === undefined || item.show ? true : false"
-          :label-width="item.labelWidth ? item.labelWidth : 'auto'"
-          :label="item.label"
-          :key="`${index}-${item.prop}`"
-          :prop="item.prop"
-          :class="{
-            'is-inline_textarea': item.type === 'Textarea' && isInline,
-            'is-textarea': item.type === 'Textarea',
-          }"
-        >
-          <!-- 输入框 -->
-          <el-input
-            clearable
-            :readonly="item.readonly"
-            v-if="item.type === 'Input' || item.type === 'Textarea'"
-            :type="item.type === 'Textarea' ? 'textarea' : 'input'"
-            :rows="item.type === 'Textarea' ? item.rows : ''"
-            v-model.trim="searchData[item.prop]"
-            :size="size"
-            :suffix-icon="item.suffixIcon || ''"
-            :prefix-icon="item.prefixIcon || ''"
-            :autofocus="item.focus ? true : false"
-            :disabled="item.disabled"
-            :placeholder="
-              item.placeholder === undefined
-                ? `请输入${item.label}`
-                : item.placeholder
-            "
-            :style="{ width: item.width }"
-            @blur="item.blur && item.blur(searchData[item.prop])"
-            @input="item.input && item.input(searchData[item.prop])"
+        <template v-if="item.type === 'slot'">
+          <slot :name="item.prop" :rules="rules" :form="searchData"> </slot>
+        </template>
+        <template v-else>
+          <el-form-item
+            v-if="item.show === undefined || item.show ? true : false"
+            :label-width="item.labelWidth ? item.labelWidth : 'auto'"
+            :label="item.label"
+            :key="`${index}-${item.prop}`"
+            :prop="item.prop"
+            :class="{
+              'is-inline_textarea': item.type === 'Textarea' && isInline,
+              'is-textarea': item.type === 'Textarea',
+            }"
           >
-            <template v-if="item.append" slot="append">
-              <slot-component
-                v-if="item.append.render"
-                class="c3 p12"
-                :render="item.append.render"
-              ></slot-component>
-              <span v-else class="c3 p12">{{ item.append.text || "" }}</span>
-            </template>
-            <template v-if="item.prepend" slot="prepend">
-              <slot-component
-                v-if="item.prepend.render"
-                class="c3 p12"
-                :render="item.prepend.render"
-              ></slot-component>
-              <span v-else class="c3 p12">{{ item.prepend.text || "" }}</span>
-            </template>
-          </el-input>
+            <!-- 输入框 -->
+            <el-input
+              clearable
+              :readonly="item.readonly"
+              v-if="item.type === 'Input' || item.type === 'Textarea'"
+              :type="item.type === 'Textarea' ? 'textarea' : 'input'"
+              :rows="item.type === 'Textarea' ? item.rows : ''"
+              v-model.trim="searchData[item.prop]"
+              :size="size"
+              :suffix-icon="item.suffixIcon || ''"
+              :prefix-icon="item.prefixIcon || ''"
+              :autofocus="item.focus ? true : false"
+              :disabled="item.disabled"
+              :placeholder="
+                item.placeholder === undefined ? `请输入${item.label}` : item.placeholder
+              "
+              :style="{ width: item.width }"
+              @blur="item.blur && item.blur(searchData[item.prop])"
+              @input="item.input && item.input(searchData[item.prop])"
+            >
+              <template v-if="item.append" slot="append">
+                <slot-component
+                  v-if="item.append.render"
+                  class="c3 p12"
+                  :render="item.append.render"
+                ></slot-component>
+                <span v-else class="c3 p12">{{ item.append.text || '' }}</span>
+              </template>
+              <template v-if="item.prepend" slot="prepend">
+                <slot-component
+                  v-if="item.prepend.render"
+                  class="c3 p12"
+                  :render="item.prepend.render"
+                ></slot-component>
+                <span v-else class="c3 p12">{{ item.prepend.text || '' }}</span>
+              </template>
+            </el-input>
 
-          <!-- form 数字输入框 add by Liuhan 2020-11-04-->
-          <!-- 用法示例productoperation_pricesystem_ui /pricesystem/tariffManage/priceDimension/priceDimension-add.vue维度长度 -->
-          <el-input-number
-            v-if="item.type === 'InputNumber'"
-            :style="{ width: item.width }"
-            v-model.trim="searchData[item.prop]"
-            v-bind="item.attrs"
-            v-on="item.on"
-            :disabled="item.disabled"
-            :class="`InputNumber-${item.align || 'center'}`"
-          ></el-input-number>
+            <!-- form 数字输入框 add by Liuhan 2020-11-04-->
+            <!-- 用法示例productoperation_pricesystem_ui /pricesystem/tariffManage/priceDimension/priceDimension-add.vue维度长度 -->
+            <el-input-number
+              v-if="item.type === 'InputNumber'"
+              :style="{ width: item.width }"
+              v-model.trim="searchData[item.prop]"
+              v-bind="item.attrs"
+              v-on="item.on"
+              :disabled="item.disabled"
+              :class="`InputNumber-${item.align || 'center'}`"
+            ></el-input-number>
 
-          <!-- 上传文件及图片 -->
-          <upload-model
+            <!-- 上传文件及图片 -->
+            <!-- <upload-model
             v-if="item.type === 'UploadModel'"
             :http="item.http"
             :fileList="searchData[item.prop]"
@@ -95,222 +97,206 @@
             @uploadData="(val) => uploadData(item.ref, val)"
             :ref="item.ref"
             :multiple="item.multiple"
-          />
+          /> -->
 
-          <!-- 下拉框 -->
-          <el-select
-            clearable
-            filterable
-            :multiple="item.multiple ? true : false"
-            :filter-method="item.filterMethod"
-            :readonly="item.readonly"
-            v-if="item.type === 'Select'"
-            :disabled="item.disabled"
-            :allow-create="item.allowCreate ? true : false"
-            :placeholder="
-              item.placeholder === undefined
-                ? `请选择${item.label}`
-                : item.placeholder
-            "
-            v-model.trim="searchData[item.prop]"
-            :style="{ width: item.width }"
-            :size="size"
-            @change="item.change && item.change(searchData[item.prop])"
-          >
-            <el-option
-              v-for="op in item.options"
-              :label="op[item.labelKey || 'label']"
-              :value="op[item.valueKey || 'value']"
-              :key="op[item.valueKey || 'value']"
+            <!-- 下拉框 -->
+            <el-select
+              clearable
+              filterable
+              :multiple="item.multiple ? true : false"
+              :filter-method="item.filterMethod"
+              :readonly="item.readonly"
+              v-if="item.type === 'Select'"
+              :disabled="item.disabled"
+              :allow-create="item.allowCreate ? true : false"
+              :placeholder="
+                item.placeholder === undefined ? `请选择${item.label}` : item.placeholder
+              "
+              v-model.trim="searchData[item.prop]"
+              :style="{ width: item.width }"
+              :size="size"
+              @change="item.change && item.change(searchData[item.prop])"
             >
-            </el-option>
-          </el-select>
-          <!-- 单选 -->
-          <el-radio-group
-            @change="item.change && item.change(searchData[item.prop])"
-            v-if="item.type === 'Radio'"
-            v-model="searchData[item.prop]"
-          >
-            <el-radio
-              v-for="ra in item.radios"
-              :label="ra.value"
-              :key="ra.value"
+              <el-option
+                v-for="op in item.options"
+                :label="op[item.labelKey || 'label']"
+                :value="op[item.valueKey || 'value']"
+                :key="op[item.valueKey || 'value']"
+              >
+              </el-option>
+            </el-select>
+            <!-- 单选 -->
+            <el-radio-group
+              @change="item.change && item.change(searchData[item.prop])"
+              v-if="item.type === 'Radio'"
+              v-model="searchData[item.prop]"
             >
-              {{ ra.label }}
-            </el-radio>
-          </el-radio-group>
-          <!-- 单选按钮 -->
-          <el-radio-group
-            v-if="item.type === 'RadioButton'"
-            v-model="searchData[item.prop]"
-            @change="item.change && item.change(searchData[item.prop])"
-          >
-            <el-radio-button
-              v-for="ra in item.radios"
-              :label="ra.value"
-              :key="ra.value"
-              >{{ ra.label }}
-            </el-radio-button>
-          </el-radio-group>
-          <!-- 复选框 -->
-          <el-checkbox-group
-            v-if="item.type === 'Checkbox'"
-            :style="{ width: item.width }"
-            v-model="searchData[item.prop]"
-          >
-            <el-checkbox
-              v-for="ch in item.checkboxs"
-              :label="ch.value"
-              :key="ch.value"
-              >{{ ch.label }}
-            </el-checkbox>
-          </el-checkbox-group>
-
-          <!-- 日期 -->
-          <el-date-picker
-            v-if="
-              [
-                'Date',
-                'date',
-                'year',
-                'month',
-                'date',
-                'dates',
-                'week',
-                'datetime',
-                'datetimerange',
-                'daterange',
-                'monthrange',
-              ].includes(item.type)
-            "
-            :type="item.type !== 'Date' ? item.type : 'date'"
-            :disabled="item.disabled"
-            :value-format="item.valueFormat"
-            :readonly="item.readonly"
-            :style="{ width: item.width }"
-            :placeholder="item.placeholder"
-            :picker-options="item.pickerOptions"
-            v-model.trim="searchData[item.prop]"
-            @change="item.change && item.change(searchData[item.prop])"
-          ></el-date-picker>
-          <!-- 固定时间点 -->
-          <el-time-select
-            v-if="item.type === 'TimeSelect'"
-            :value-format="item.valueFormat"
-            :disabled="item.disabled"
-            :readonly="item.readonly"
-            :style="{ width: item.width }"
-            :placeholder="item.placeholder"
-            :picker-options="item.pickerOptions"
-            v-model.trim="searchData[item.prop]"
-          ></el-time-select>
-          <!-- 任意时间点-->
-
-          <el-time-picker
-            :is-range="item.isRange"
-            v-if="item.type === 'Time'"
-            :value-format="item.valueFormat"
-            :format="item.format"
-            :disabled="item.disabled"
-            :readonly="item.readonly"
-            :style="{ width: item.width }"
-            :placeholder="item.placeholder"
-            :picker-options="item.pickerOptions"
-            v-model.trim="searchData[item.prop]"
-          >
-          </el-time-picker>
-          <!-- 日期时间 -->
-          <el-date-picker
-            v-if="item.type === 'DateTime'"
-            :value-format="item.valueFormat"
-            type="datetime"
-            :readonly="item.readonly"
-            :style="{ width: item.width }"
-            :placeholder="item.placeholder"
-            :picker-options="item.pickerOptions"
-            v-model.trim="searchData[item.prop]"
-            :disabled="item.disable && item.disable(searchData[item.prop])"
-          ></el-date-picker>
-          <!-- 滑块 -->
-          <el-slider
-            :disabled="item.disabled"
-            v-if="item.type === 'Slider'"
-            v-model="searchData[item.prop]"
-          >
-          </el-slider>
-          <!-- 开关 -->
-          <el-switch
-            v-if="item.type === 'Switch'"
-            :disabled="item.disabled"
-            :active-text="item.active"
-            :inactive-text="item.inactive"
-            v-model="searchData[item.prop]"
-            @change="item.change && item.change(searchData[item.prop])"
-          >
-          </el-switch>
-          <!-- 输入框搜索 -->
-          <el-input
-            clearable
-            v-if="item.type === 'InputHandle'"
-            v-model.trim="searchData[item.prop]"
-            :size="size"
-            :placeholder="item.placeholder"
-            :style="{ width: item.width }"
-            :disabled="item.disabled"
-            :readonly="item.readonly"
-            :type="item.typetext"
-            @blur="item.blur && item.blur(searchData[item.prop])"
-            @input="item.input && item.input(searchData[item.prop])"
-          >
-            <el-button
-              class="inputButton"
-              slot="append"
-              style="color: #ffffff"
-              :style="{ backgroundColor: theme }"
-              :type="item.buttonType"
-              :icon="item.buttonIcon"
-              :disabled="item.buttonDisabled"
-              @click="item.buttonClick"
+              <el-radio v-for="ra in item.radios" :label="ra.value" :key="ra.value">
+                {{ ra.label }}
+              </el-radio>
+            </el-radio-group>
+            <!-- 单选按钮 -->
+            <el-radio-group
+              v-if="item.type === 'RadioButton'"
+              v-model="searchData[item.prop]"
+              @change="item.change && item.change(searchData[item.prop])"
             >
-              {{ item.buttonText }}
-            </el-button>
-          </el-input>
-          <!-- 级联选择器-->
-          <el-cascader
-            v-if="item.type === 'Cascader'"
-            :style="{ width: item.width }"
-            :disabled="item.disabled"
-            filterable
-            v-model.trim="searchData[item.prop]"
-            :placeholder="item.placeholder"
-            :separator="item.separator"
-            :checkStrictly="item.checkStrictly"
-            :options="item.options"
-            :readonly="item.readonly"
-            :filter-method="item.filterMethod"
-            :node-key="item.nodeKey"
-            :before-filter="item.beforeFilter"
-            :props="item.props"
-            :ref="item.ref"
-            :show-all-levels="item.showAllLevels"
-            @change="item.change && item.change(searchData[item.prop])"
-          ></el-cascader>
-          <!-- 文本 -->
-          <p
-            class="c3 p12"
-            v-if="item.type === 'Text'"
-            :style="{ width: item.width }"
-          >
-            {{ searchData[item.prop] }}
-          </p>
+              <el-radio-button v-for="ra in item.radios" :label="ra.value" :key="ra.value"
+                >{{ ra.label }}
+              </el-radio-button>
+            </el-radio-group>
+            <!-- 复选框 -->
+            <el-checkbox-group
+              v-if="item.type === 'Checkbox'"
+              :style="{ width: item.width }"
+              v-model="searchData[item.prop]"
+            >
+              <el-checkbox v-for="ch in item.checkboxs" :label="ch.value" :key="ch.value"
+                >{{ ch.label }}
+              </el-checkbox>
+            </el-checkbox-group>
 
-          <!--自定义-->
-          <slot-component
-            v-if="item.type === 'Slot'"
-            class="c3 p12"
-            :render="item.render"
-          ></slot-component>
-        </el-form-item>
+            <!-- 日期 -->
+            <el-date-picker
+              v-if="
+                [
+                  'Date',
+                  'date',
+                  'year',
+                  'month',
+                  'date',
+                  'dates',
+                  'week',
+                  'datetime',
+                  'datetimerange',
+                  'daterange',
+                  'monthrange',
+                ].includes(item.type)
+              "
+              :type="item.type !== 'Date' ? item.type : 'date'"
+              :disabled="item.disabled"
+              :value-format="item.valueFormat"
+              :readonly="item.readonly"
+              :style="{ width: item.width }"
+              :placeholder="item.placeholder"
+              :picker-options="item.pickerOptions"
+              v-model.trim="searchData[item.prop]"
+              @change="item.change && item.change(searchData[item.prop])"
+            ></el-date-picker>
+            <!-- 固定时间点 -->
+            <el-time-select
+              v-if="item.type === 'TimeSelect'"
+              :value-format="item.valueFormat"
+              :disabled="item.disabled"
+              :readonly="item.readonly"
+              :style="{ width: item.width }"
+              :placeholder="item.placeholder"
+              :picker-options="item.pickerOptions"
+              v-model.trim="searchData[item.prop]"
+            ></el-time-select>
+            <!-- 任意时间点-->
+
+            <el-time-picker
+              :is-range="item.isRange"
+              v-if="item.type === 'Time'"
+              :value-format="item.valueFormat"
+              :format="item.format"
+              :disabled="item.disabled"
+              :readonly="item.readonly"
+              :style="{ width: item.width }"
+              :placeholder="item.placeholder"
+              :picker-options="item.pickerOptions"
+              v-model.trim="searchData[item.prop]"
+            >
+            </el-time-picker>
+            <!-- 日期时间 -->
+            <el-date-picker
+              v-if="item.type === 'DateTime'"
+              :value-format="item.valueFormat"
+              type="datetime"
+              :readonly="item.readonly"
+              :style="{ width: item.width }"
+              :placeholder="item.placeholder"
+              :picker-options="item.pickerOptions"
+              v-model.trim="searchData[item.prop]"
+              :disabled="item.disable && item.disable(searchData[item.prop])"
+            ></el-date-picker>
+            <!-- 滑块 -->
+            <el-slider
+              :disabled="item.disabled"
+              v-if="item.type === 'Slider'"
+              v-model="searchData[item.prop]"
+            >
+            </el-slider>
+            <!-- 开关 -->
+            <el-switch
+              v-if="item.type === 'Switch'"
+              :disabled="item.disabled"
+              :active-text="item.active"
+              :inactive-text="item.inactive"
+              v-model="searchData[item.prop]"
+              @change="item.change && item.change(searchData[item.prop])"
+            >
+            </el-switch>
+            <!-- 输入框搜索 -->
+            <el-input
+              clearable
+              v-if="item.type === 'InputHandle'"
+              v-model.trim="searchData[item.prop]"
+              :size="size"
+              :placeholder="item.placeholder"
+              :style="{ width: item.width }"
+              :disabled="item.disabled"
+              :readonly="item.readonly"
+              :type="item.typetext"
+              @blur="item.blur && item.blur(searchData[item.prop])"
+              @input="item.input && item.input(searchData[item.prop])"
+            >
+              <el-button
+                class="inputButton"
+                slot="append"
+                style="color: #ffffff"
+                :type="item.buttonType"
+                :icon="item.buttonIcon"
+                :disabled="item.buttonDisabled"
+                @click="item.buttonClick"
+              >
+                {{ item.buttonText }}
+              </el-button>
+            </el-input>
+            <!-- 级联选择器-->
+            <el-cascader
+              v-if="item.type === 'Cascader'"
+              :style="{ width: item.width }"
+              :disabled="item.disabled"
+              filterable
+              v-model.trim="searchData[item.prop]"
+              :placeholder="item.placeholder"
+              :separator="item.separator"
+              :checkStrictly="item.checkStrictly"
+              :options="item.options"
+              :readonly="item.readonly"
+              :filter-method="item.filterMethod"
+              :node-key="item.nodeKey"
+              :before-filter="item.beforeFilter"
+              :props="item.props"
+              :ref="item.ref"
+              :show-all-levels="item.showAllLevels"
+              @change="item.change && item.change(searchData[item.prop])"
+            ></el-cascader>
+            <!-- 文本 -->
+            <p class="c3 p12" v-if="item.type === 'Text'" :style="{ width: item.width }">
+              {{ searchData[item.prop] }}
+            </p>
+
+            <!--自定义-->
+            <slot-component
+              v-if="item.type === 'Slot'"
+              class="c3 p12"
+              :render="item.render"
+            ></slot-component>
+          </el-form-item>
+        </template>
       </template>
       <slot name="append"></slot>
       <!-- 操作 -->
@@ -343,7 +329,7 @@ let slotComponent = {
   },
 };
 export default {
-  name: "FormView",
+  name: 'FormView',
   components: {
     slotComponent,
   },
@@ -360,12 +346,10 @@ export default {
     //表单域标签的位置
     labelPosition: {
       type: String,
-      default: "right",
+      default: 'right',
       validator(type) {
-        if (type && !["right", "left", "top"].includes(type)) {
-          console.error(
-            "labelPosition类型必须为:" + ["right", "left", "top"].join("、")
-          );
+        if (type && !['right', 'left', 'top'].includes(type)) {
+          console.error('labelPosition类型必须为:' + ['right', 'left', 'top'].join('、'));
         }
         return true;
       },
@@ -373,7 +357,7 @@ export default {
     //ref
     formRef: {
       type: String,
-      default: "inlineForm",
+      default: 'inlineForm',
     },
     //rules
     rules: {
@@ -404,24 +388,21 @@ export default {
         return {};
       },
     },
-  },
-  computed: {
-    size() {
-      return this.$store.state.settings.size;
-    },
-    theme() {
-      return this.$store.state.settings.theme;
+    size: {
+      type: String,
+      default: 'small',
     },
   },
+  computed: {},
   methods: {
     //获取上传数据
-    uploadData(ref, val) {
-      var obj = {
-        obj: ref,
-      };
-      Object.assign(val, obj);
-      this.$emit("uploadData", val);
-    },
+    // uploadData(ref, val) {
+    //   var obj = {
+    //     obj: ref,
+    //   };
+    //   Object.assign(val, obj);
+    //   this.$emit('uploadData', val);
+    // },
   },
 };
 </script>
