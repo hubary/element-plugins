@@ -25,10 +25,10 @@
         <slot name="buttons"></slot>
       </template>
       <template v-else>
-        <el-button size="mini" icon="el-icon-search" type="primary" @click="onSearch"
-          >搜索</el-button
+        <el-button :size="size" icon="el-icon-search" type="primary" @click="onSearch"
+          >查询</el-button
         >
-        <el-button size="mini" icon="el-icon-refresh-left" @click="onReset">重置</el-button>
+        <el-button :size="size" icon="el-icon-refresh-left" @click="onReset">重置</el-button>
       </template>
     </div>
   </div>
@@ -54,6 +54,10 @@ export default {
     isAnimation: {
       type: Boolean,
       default: false,
+    },
+    size: {
+      type: String,
+      default: 'small',
     },
   },
   data() {

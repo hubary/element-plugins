@@ -47,7 +47,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          mini: '410px',
+          mini: '416px',
           small: '590px',
           medium: '850px',
           fullscreen: '100%',
